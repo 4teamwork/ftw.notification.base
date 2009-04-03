@@ -1,0 +1,25 @@
+Metadata-Version: 1.0
+Name: ftw.notification.base
+Version: 0.1dev
+Summary: UNKNOWN
+Home-page: http://svn.plone.org/svn/plone/plone.app.example
+Author: Victor BAUMANN
+Author-email: v.baumann@4teamwork.ch
+License: GPL
+Description: Introduction
+        ============
+        
+        
+        
+        Changelog
+        =========
+        
+        0.1 (xxxx-xx-xx)
+        ----------------
+        
+        * Initial release
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+    <adapter
+        factory=".notifier.BaseNotifier"
+        for="*"
+        provides="..interfaces.INotifier"
+        />
+
+</configure>
