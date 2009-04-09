@@ -11,12 +11,16 @@ class NotificationForm(BrowserView):
     template = ViewPageTemplateFile('notification_form.pt')
 
     def __call__(self):
+
+        sp = getToolByName(self.context, 'portal_properties').site_properties
+        use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())   
+
         if self.request.get('submit'):
             comment = self.request.get('comment', '')
             notify(NotificationEvent(self.context, comment))
-            self.request.RESPONSE.redirect(self.context.absolute_url())
+            self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
         if self.request.get('cancel'):
-            self.request.RESPONSE.redirect(self.context.absolute_url())
+            self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
         return self.template()
 
     def getAssignableUsers(self):
