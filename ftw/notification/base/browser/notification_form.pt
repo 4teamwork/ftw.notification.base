@@ -23,10 +23,10 @@
 			<h2>Kommentar</h2>
 			<textarea rows="10" cols="80" name="comment"></textarea>
 			<br />&nbsp;<br /><br />
-<p>
+<!--<p>
 			<input type="checkbox" />
 			<b>Nachricht im Journal speichern?</b>
-			</p>
+			</p>-->
 			<br />&nbsp;<br /><br />
 			<input type="submit" value="abschicken" class="submit" name="submit"/>
 			<input type="submit" value="abbrechen" name="cancel"/>
