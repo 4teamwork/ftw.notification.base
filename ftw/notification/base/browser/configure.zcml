@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="ftw.notification.base">
+
+    <browser:page
+        for="*"
+        name="notification_form"
+		class=".views.NotificationForm"
+        permission="zope.Public"
+        template="notification_form.pt"
+        />
+
+
+</configure>

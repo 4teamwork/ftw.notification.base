@@ -13,9 +13,12 @@ ftw.notification.base.egg-info/top_level.txt
 ftw/notification/__init__.py
 ftw/notification/base/__init__.py
 ftw/notification/base/interfaces.py
+ftw/notification/base/notifier.py
 ftw/notification/base/tests.py
 ftw/notification/base/adapters/__init__.py
 ftw/notification/base/adapters/notifier.py
+ftw/notification/base/browser/__init__.py
+ftw/notification/base/browser/views.py
 ftw/notification/base/events/__init__.py
 ftw/notification/base/events/events.py
 ftw/notification/base/events/handlers.py
