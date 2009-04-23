@@ -1,2 +1,0 @@
-ftw
-ftw.notification
