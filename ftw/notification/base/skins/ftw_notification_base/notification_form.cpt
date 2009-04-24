@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="izug.arbeitsraum">
+
+<body>
+<div metal:fill-slot="main" class="notification_form">
+    <metal:main-macro define-macro="main">
+	<h1>Benachrichtigung Versenden</h1>
+    <form name="sendto_form"
+          action="sendto_form"
+          method="post"
+          enctype="multipart/form-data"
+          tal:attributes="action string:${here/getId}/${template/getId}">
+
+
+		<tal:wrapper tal:content="structure here/@@notification_form_content" />
+
+		
+        <div class="formControls" i18n:domain="plone">
+	
+		  <input type="hidden" name="form.submitted" value="1" />
+          <input class="standalone"
+                 tabindex=""
+                 type="submit"
+                 name="form.button.Send"
+                 value="Send"
+                 i18n:attributes="value label_send"
+                 tal:attributes="tabindex tabindex/next;"
+                 />
+          <input class="context"
+                 tabindex=""
+                 type="submit"
+                 name="form.button.Cancel"
+                 value="Cancel"
+                 i18n:attributes="value label_cancel"
+                 tal:attributes="tabindex tabindex/next;"
+                 />                    
+        </div>
+
+	</form>
+  </metal:main-macro>
+</div>
+
+</body>
+</html>

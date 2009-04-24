@@ -1,16 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="here/main_template/macros/master"
-      i18n:domain="izug.arbeitsraum">
-
-<body>
-<div metal:fill-slot="main" class="notification_form">
-    <metal:main-macro define-macro="main">
-		<h1>Benachrichtigung Versenden</h1>
-		<form tal:define="users view/getAssignableUsers" s>
+<tal:block i18n:domain="izug.arbeitsraum" tal:define="users view/getAssignableUsers">
 			<h2>Empf&auml;nger</h2>
 			<table style="border-top:None;" name="notification_form" method="GET">
 				<tbody>
@@ -27,12 +15,4 @@
 			<input type="checkbox" />
 			<b>Nachricht im Journal speichern?</b>
 			</p>-->
-			<br />&nbsp;<br /><br />
-			<input type="submit" value="abschicken" class="submit" name="submit"/>
-			<input type="submit" value="abbrechen" name="cancel"/>
-		</form>
-  </metal:main-macro>
-</div>
-
-</body>
-</html>
+</tal:block>

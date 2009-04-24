@@ -1,0 +1,7 @@
+[default]
+title=Send this page to somebody
+
+[actions]
+action.success..Send = traverse_to:string:notification_form_content/send_notification
+action.success..Cancel = redirect_to_action:string:view
+action.failure = traverse_to:string:ftw_SendTo_form

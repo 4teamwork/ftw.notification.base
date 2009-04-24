@@ -5,10 +5,11 @@
 
     <browser:page
         for="*"
-        name="notification_form"
+        name="notification_form_content"
 		class=".views.NotificationForm"
         permission="zope.Public"
         template="notification_form.pt"
+		allowed_attributes="send_notification"
         />
 
 

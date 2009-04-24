@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<object name="portal_skins"
+        meta_type="Plone Skins Tool"
+        allow_any="False"
+        cookie_persistence="False"
+        request_varname="plone_skin">
+
+ <object name="ftw_notification_base"
+    meta_type="Filesystem Directory View"
+    directory="ftw.notification.base:skins/ftw_notification_base"/>
+  
+  <skin-path name="*">
+  <layer name="ftw_notification_base"
+     insert-after="izug_theme_custom_templates"/> 
+ </skin-path>
+
+</object>
