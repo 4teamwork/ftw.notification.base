@@ -11,14 +11,14 @@ from ftw.notification.base import notification_base_factory as _
 class NotificationForm(BrowserView):
 
     template = ViewPageTemplateFile('notification_form.pt')
-        
+    
     def send_notification(self):
         """"""
         sp = getToolByName(self.context, 'portal_properties').site_properties
         use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())
         comment = self.request.get('comment', '')
         notify(NotificationEvent(self.context, comment))
-        IStatusMessage(self.request).addStatusMessage('statusmessage_notification_sent', type='info')
+        IStatusMessage(self.request).addStatusMessage(_('statusmessage_notification_sent'), type='info')
         self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
 
     def getAssignableUsers(self):
