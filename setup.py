@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.1-dev'
+maintainer = 'Victor Baumann'
 
 setup(name='ftw.notification.base',
       version=version,
-      description="",
+      description="Maintainer: %s" % maintainer,
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -15,10 +16,10 @@ setup(name='ftw.notification.base',
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='',
-      author='Victor BAUMANN',
-      author_email='v.baumann@4teamwork.ch',
-      url='http://svn.plone.org/svn/plone/plone.app.example',
-      license='GPL',
+      author='%s, 4teamworkk GmbH' % maintainer,
+      author_email='mailto:info@4teamwork.ch',
+      url='http://psc.4teamwork.ch/4teamwork/ftw/ftw.notification.base/',
+      license='GPL2',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['ftw', 'ftw.notification'],
       include_package_data=True,
