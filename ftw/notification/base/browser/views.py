@@ -37,13 +37,12 @@ class NotificationForm(BrowserView):
                 if role in user_id_and_roles[1]:
                     user = pas_tool.getUserById(user_id_and_roles[0])
                     if user:
-                        results[user.getId()] = '%s (%s)' % (user.getProperty('fullname', ''), user.getId())
+                        results['%s (%s)' % (user.getProperty('fullname', ''), user.getId())] = user.getId()
             if user_id_and_roles[2] == 'group':
                 if role in user_id_and_roles[1]:
                     for user in pas_tool.getGroupById(user_id_and_roles[0]).getGroupMembers():
-                        results[user.getId()] = '%s (%s)' % (user.getProperty('fullname', ''), user.getId())
+                        results['%s (%s)' % (user.getProperty('fullname', ''), user.getId())] = user.getId()
 
-        results = results.items()
-        results.sort(lambda a,b:cmp(a[0],b[0]))
-        
-        return results
+        keys = results.keys()
+        keys.sort()
+        return [[results[k],k] for k in keys]
