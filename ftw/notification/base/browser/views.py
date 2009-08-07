@@ -26,11 +26,10 @@ class NotificationForm(BrowserView):
         """
         context = self.context.aq_inner
         role = 'Reader'
-        results = []
+        results = {}
         pas_tool = getToolByName(context, 'acl_users')
         utils_tool = getToolByName(context, 'plone_utils')
         
-
         inherited_and_local_roles = utils_tool.getInheritedLocalRoles(self.context.aq_parent) + pas_tool.getLocalRolesForDisplay(self.context.aq_inner)
             
         for user_id_and_roles in inherited_and_local_roles:
@@ -38,10 +37,13 @@ class NotificationForm(BrowserView):
                 if role in user_id_and_roles[1]:
                     user = pas_tool.getUserById(user_id_and_roles[0])
                     if user:
-                        results.append((user.getId(), '%s (%s)' % (user.getProperty('fullname', ''), user.getId())))
+                        results[user.getId()] = '%s (%s)' % (user.getProperty('fullname', ''), user.getId())
             if user_id_and_roles[2] == 'group':
                 if role in user_id_and_roles[1]:
                     for user in pas_tool.getGroupById(user_id_and_roles[0]).getGroupMembers():
-                        results.append((user.getId(), '%s (%s)' % (user.getProperty('fullname', ''), user.getId())))
+                        results[user.getId()] = '%s (%s)' % (user.getProperty('fullname', ''), user.getId())
 
+        results = results.items()
+        results.sort(lambda a,b:cmp(a[0],b[0]))
+        
         return results
