@@ -3,7 +3,7 @@ Changelog
 
 0.2
 ---
-
+* [07.08.2009] Issue #583 Auflistung der Kontakte für Benachrichtigung sortiert und Kontakte nur einmal anzeigen [jin]
 
 0.1
 ---
