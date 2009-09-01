@@ -23,7 +23,7 @@
         <div class="formControls" i18n:domain="plone">
 	
 		  <input type="hidden" name="form.submitted" value="1" />
-          <input class="standalone"
+          <input class="context"
                  tabindex=""
                  type="submit"
                  name="form.button.Send"
@@ -31,7 +31,7 @@
                  i18n:attributes="value label_send"
                  tal:attributes="tabindex tabindex/next;"
                  />
-          <input class="context"
+          <input class="standalone"
                  tabindex=""
                  type="submit"
                  name="form.button.Cancel"

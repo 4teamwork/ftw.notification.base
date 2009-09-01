@@ -5,6 +5,9 @@ Changelog
 0.3
 ---
 
+* [01.09.2009] Issue #621 Arbeitsraum - Button "senden" nicht aktiv [jba]
+
+
 0.2
 ---
 * [07.08.2009] Issue #583 Auflistung der Kontakte für Benachrichtigung sortiert und Kontakte nur einmal anzeigen [jin]
