@@ -14,3 +14,9 @@ msgstr ""
 
 msgid "statusmessage_notification_sent"
 msgstr "Nachricht wurde versendet"
+
+msgid "statusmessage_notification_not_sent"
+msgstr "Nachricht wurde nicht versendet"
+
+msgid "statusmessage_no_recipients"
+msgstr "Keine Empfänger ausgewählt"

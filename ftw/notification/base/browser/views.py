@@ -16,10 +16,14 @@ class NotificationForm(BrowserView):
         """"""
         sp = getToolByName(self.context, 'portal_properties').site_properties
         use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())
-        comment = self.request.get('comment', '')
-        notify(NotificationEvent(self.context, comment))
-        IStatusMessage(self.request).addStatusMessage(_('statusmessage_notification_sent'), type='info')
-        self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
+        
+        if len(self.request.get('to_list', [])):
+            comment = self.request.get('comment', '')
+            notify(NotificationEvent(self.context, comment))
+            self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
+        else:
+            IStatusMessage(self.request).addStatusMessage(_('statusmessage_no_recipients'), type='error')
+            self.request.RESPONSE.redirect(self.context.absolute_url() + '/notification_form')            
 
     def getAssignableUsers(self):
         """Collect users with a given role and return them in a list.
