@@ -19,4 +19,4 @@ msgid "statusmessage_notification_not_sent"
 msgstr "Nachricht wurde nicht versendet"
 
 msgid "statusmessage_no_recipients"
-msgstr "Keine Empfänger ausgewählt"
+msgstr "Bitte wählen Sie mindestens 1 Empfänger aus"
