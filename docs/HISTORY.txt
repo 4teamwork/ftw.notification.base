@@ -5,6 +5,8 @@ Changelog
 0.4
 ---
 
+* [04.09.2009] Issue #644: Benachrichtigung - kein Empfänger ausgewählt [vba]
+
 
 0.3
 ---
