@@ -1,5 +1,14 @@
 <tal:block i18n:domain="izug.arbeitsraum" tal:define="users view/getAssignableUsers">
 			<h2>Empf&auml;nger</h2>
+			Auswählen: 
+			<script>
+			    function select_recipients(checked){
+			        jq('input[name=to_list:list]').attr('checked', checked);
+			    }
+			    
+			</script>
+			<a href="javascript:select_recipients(true)">alle</a>
+			<a href="javascript:select_recipients(false)">keine</a>
 			<table style="border-top:None;" name="notification_form" method="GET">
 				<tbody>
 					<tr tal:repeat="user users">
