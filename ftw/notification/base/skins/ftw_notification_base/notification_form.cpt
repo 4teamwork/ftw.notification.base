@@ -9,7 +9,7 @@
 <body>
 <div metal:fill-slot="main" class="notification_form">
     <metal:main-macro define-macro="main">
-	<h1>Benachrichtigung Versenden</h1>
+	<h1>Benachrichtigung versenden</h1>
     <form name="sendto_form"
           action="sendto_form"
           method="post"

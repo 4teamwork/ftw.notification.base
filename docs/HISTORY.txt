@@ -4,6 +4,10 @@ Changelog
 
 0.5
 ---
+
+* Issue #650: Benachrichtigung - alle Empfänger selektieren
+  [02.12.2009, jbaumann]
+
 * [26.11.2009] Issue #654: Benachrichtigung - alle Empfänger selektieren [vba]
 
 
