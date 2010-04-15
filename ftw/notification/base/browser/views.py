@@ -22,7 +22,7 @@ class NotificationForm(BrowserView):
             notify(NotificationEvent(self.context, comment))
             self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
         else:
-            IStatusMessage(self.request).addStatusMessage(_('statusmessage_no_recipients'), type='error')
+            IStatusMessage(self.request).addStatusMessage(_(u'statusmessage_no_recipients'), type='error')
             self.request.RESPONSE.redirect(self.context.absolute_url() + '/notification_form')            
 
     def getAssignableUsers(self):

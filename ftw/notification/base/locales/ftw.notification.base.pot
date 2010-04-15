@@ -1,3 +1,6 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -9,24 +12,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: ftw.notification.base\n"
 
 #. Default: "Send Notification"
 #: ftw.notification.base/ftw/notification/base/events/handlers.py:20
 msgid "label_send_notification"
-msgstr "Benachrichtigung Senden"
+msgstr ""
 
 #: ftw.notification.base/ftw/notification/base/browser/views.py:26
 msgid "statusmessage_no_recipients"
-msgstr "Bitte wählen Sie mindestens 1 Empfänger aus"
+msgstr ""
 
 #. Default: "Nachricht wurde nicht versendet"
 msgid "statusmessage_notification_not_sent"
-msgstr "Nachricht wurde nicht versendet"
+msgstr ""
 
 #. Default: "Nachricht wurde versendet"
 msgid "statusmessage_notification_sent"
-msgstr "Nachricht wurde versendet"
-
+msgstr ""
 
