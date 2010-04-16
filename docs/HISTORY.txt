@@ -2,8 +2,9 @@ Changelog
 =========
 
 
-0.6
+1.0
 ---
+
 * Fixed the translations, used i18ndude
 
 0.5
