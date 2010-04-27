@@ -12,7 +12,8 @@
 			<table style="border-top:None;" name="notification_form" method="GET">
 				<tbody>
 					<tr tal:repeat="user users">
-						<td style="width:2em;"><input type="checkbox" name="to_list:list" tal:attributes="value python:user[0]"/></td>
+						<td style="width:2em;">
+						    <input type="checkbox" name="to_list:list" tal:attributes="value python:user[0]; checked python:user[0] in view.pre_select or None"  /></td>
 						<td> <p tal:content="python:user[1]"/></td>
 					</tr>	
 				</tbody>

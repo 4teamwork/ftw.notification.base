@@ -11,6 +11,16 @@ from ftw.notification.base import notification_base_factory as _
 class NotificationForm(BrowserView):
 
     template = ViewPageTemplateFile('notification_form.pt')
+
+    def __init__(self, context, request):
+        super(BrowserView,self).__init__(context, request)
+        
+        self.pre_select = []
+        self.pre_select.append(self.context.REQUEST.get('head_of_meeting', None))
+        self.pre_select.append(self.context.REQUEST.get('recording_secretary', None))
+        for attendee in self.context.REQUEST.get('attendees', []):
+            if attendee.get('default'):
+                self.pre_select.append(attendee.get('default'))
     
     def send_notification(self):
         """"""

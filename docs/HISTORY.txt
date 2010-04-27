@@ -5,6 +5,8 @@ Changelog
 1.1
 ---
 
+* [27.04.2010] #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende [vba]
+
 
 1.0
 ---
