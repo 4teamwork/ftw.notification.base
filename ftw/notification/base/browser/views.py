@@ -19,8 +19,8 @@ class NotificationForm(BrowserView):
         self.pre_select.append(self.context.REQUEST.get('head_of_meeting', None))
         self.pre_select.append(self.context.REQUEST.get('recording_secretary', None))
         for attendee in self.context.REQUEST.get('attendees', []):
-            if attendee.get('default'):
-                self.pre_select.append(attendee.get('default'))
+            if attendee.get('contact'):
+                self.pre_select.append(attendee.get('contact'))
     
     def send_notification(self):
         """"""
