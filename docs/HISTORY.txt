@@ -5,7 +5,8 @@ Changelog
 1.1
 ---
 
-* [27.04.2010] #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende [vba]
+* #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende 
+  [27.04.2010, vba]
 
 
 1.0
@@ -19,13 +20,13 @@ Changelog
 * Issue #650: Benachrichtigung - alle Empfänger selektieren
   [02.12.2009, jbaumann]
 
-* [26.11.2009] Issue #650: Benachrichtigung - alle Empfänger selektieren [vba]
+* [26.11.2009] Issue #650: Benachrichtigung - alle Empfänger selektieren [vba]
 
 
 0.4
 ---
 
-* [04.09.2009] Issue #644: Benachrichtigung - kein Empfänger ausgewählt [vba]
+* [04.09.2009] Issue #644: Benachrichtigung - kein Empfänger ausgewählt [vba]
 
 
 0.3
