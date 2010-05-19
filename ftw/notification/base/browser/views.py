@@ -14,8 +14,8 @@ class NotificationForm(BrowserView):
 
     def __init__(self, context, request):
         super(BrowserView,self).__init__(context, request)
-        
         self.pre_select = []
+        self.pre_select.append(self.context.REQUEST.get('users', None))
         self.pre_select.append(self.context.REQUEST.get('head_of_meeting', None))
         self.pre_select.append(self.context.REQUEST.get('recording_secretary', None))
         for attendee in self.context.REQUEST.get('attendees', []):
@@ -23,7 +23,7 @@ class NotificationForm(BrowserView):
                 self.pre_select.append(attendee.get('contact'))
     
     def send_notification(self):
-        """"""
+        """ """
         sp = getToolByName(self.context, 'portal_properties').site_properties
         use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())
         
