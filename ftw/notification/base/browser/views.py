@@ -15,12 +15,15 @@ class NotificationForm(BrowserView):
     def __init__(self, context, request):
         super(BrowserView,self).__init__(context, request)
         self.pre_select = []
-        self.pre_select.append(self.context.REQUEST.get('users', None))
+
         self.pre_select.append(self.context.REQUEST.get('head_of_meeting', None))
         self.pre_select.append(self.context.REQUEST.get('recording_secretary', None))
         for attendee in self.context.REQUEST.get('attendees', []):
             if attendee.get('contact'):
                 self.pre_select.append(attendee.get('contact'))
+        for user in self.context.REQUEST.get('users', []):
+            if len(user):
+                self.pre_select.append(user)
     
     def send_notification(self):
         """ """
