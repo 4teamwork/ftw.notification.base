@@ -31,7 +31,7 @@ class NotificationForm(BrowserView):
         use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())
         
         if len(self.request.get('to_list', [])):
-            comment = self.request.get('comment', '')
+            comment = self.request.get('comment', '').replace('<', '&lt;').replace('>', '&gt;')
             notify(NotificationEvent(self.context, comment))
             self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
         else:

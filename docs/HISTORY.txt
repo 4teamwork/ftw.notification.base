@@ -5,6 +5,11 @@ Changelog
 1.1
 ---
 
+* Issue #957 Frage - ungültige Zeichen bei Mailadresse in Kommentarfeld
+  HTML deaktiviert.
+  https://extranet.4teamwork.ch/support/zug/maintlog/957
+  [16.06.2010, vba]
+
 * #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende 
   [27.04.2010, vba]
 
