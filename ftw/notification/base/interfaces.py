@@ -15,7 +15,7 @@ class INotificationEvent(Interface):
 
 
 class INotifier(Interface):
-    """Interface for 
+    """Interface for
     """
 
     def send_notification():

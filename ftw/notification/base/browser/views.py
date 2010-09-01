@@ -1,65 +1,38 @@
+from ftw.table.interfaces import ITableGenerator
 from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
-from zope.event import notify
-from ftw.notification.base.events.events import NotificationEvent
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.statusmessages.interfaces import IStatusMessage
-from ftw.notification.base import notification_base_factory as _
+from zope import schema
+from zope.component import queryUtility
 
+
+def name_helper(item, value):
+    return u'%s (%s)' % (item['title'], item['value'])
+
+
+def checkbox_helper(item, value):
+    return u"""<input type="checkbox"
+                      name="to_list:list"
+                      value="%s"/>""" % item['value']
 
 
 class NotificationForm(BrowserView):
 
-    template = ViewPageTemplateFile('notification_form.pt')
+    columns = (('', checkbox_helper),
+               ('Name', name_helper), )
 
-    def __init__(self, context, request):
-        super(BrowserView,self).__init__(context, request)
-        self.pre_select = []
+    @property
+    def users(self):
+        context = self.context
+        users = []
+        vocabulary = queryUtility(schema.interfaces.IVocabularyFactory,
+                               name='ftw.notification.base.users',
+                               context=context)
+        if vocabulary:
+            users = vocabulary(context)
+            # TODO: ftw.table cant handle PrincipalTerm yet. We need to
+            # convert to a dict for now
+            users = [dict(title=t.title, value=t.value) for t in users]
+        return users
 
-        self.pre_select.append(self.context.REQUEST.get('head_of_meeting', None))
-        self.pre_select.append(self.context.REQUEST.get('recording_secretary', None))
-        for attendee in self.context.REQUEST.get('attendees', []):
-            if attendee.get('contact'):
-                self.pre_select.append(attendee.get('contact'))
-        for user in self.context.REQUEST.get('users', []):
-            if len(user):
-                self.pre_select.append(user)
-    
-    def send_notification(self):
-        """ """
-        sp = getToolByName(self.context, 'portal_properties').site_properties
-        use_view_action = self.context.Type() in  sp.getProperty('typesUseViewActionInListings', ())
-        
-        if len(self.request.get('to_list', [])):
-            comment = self.request.get('comment', '').replace('<', '&lt;').replace('>', '&gt;')
-            notify(NotificationEvent(self.context, comment))
-            self.request.RESPONSE.redirect(self.context.absolute_url() + (use_view_action and '/view' or '') )
-        else:
-            IStatusMessage(self.request).addStatusMessage(_(u'statusmessage_no_recipients'), type='error')
-            self.request.RESPONSE.redirect(self.context.absolute_url() + '/notification_form')            
-
-    def getAssignableUsers(self):
-        """Collect users with a given role and return them in a list.
-        """
-        context = self.context.aq_inner
-        role = 'Reader'
-        results = {}
-        pas_tool = getToolByName(context, 'acl_users')
-        utils_tool = getToolByName(context, 'plone_utils')
-        
-        inherited_and_local_roles = utils_tool.getInheritedLocalRoles(self.context.aq_parent) + pas_tool.getLocalRolesForDisplay(self.context.aq_inner)
-            
-        for user_id_and_roles in inherited_and_local_roles:
-            if user_id_and_roles[2] == 'user':
-                if role in user_id_and_roles[1]:
-                    user = pas_tool.getUserById(user_id_and_roles[0])
-                    if user:
-                        results['%s (%s)' % (user.getProperty('fullname', ''), user.getId())] = user.getId()
-            if user_id_and_roles[2] == 'group':
-                if role in user_id_and_roles[1]:
-                    for user in pas_tool.getGroupById(user_id_and_roles[0]).getGroupMembers():
-                        results['%s (%s)' % (user.getProperty('fullname', ''), user.getId())] = user.getId()
-
-        keys = results.keys()
-        keys.sort()
-        return [[results[k],k] for k in keys]
+    def render_listing(self):
+        generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
+        return generator.generate(self.users, self.columns, sortable = True)

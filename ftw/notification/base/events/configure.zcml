@@ -2,6 +2,15 @@
     xmlns="http://namespaces.zope.org/zope">
 
     <subscriber for="..interfaces.INotificationEvent"
-                handler=".handlers.NotificationHandler" />
+                handler=".handlers.NotificationHandler" />               
 
+    <subscriber
+            for="Products.CMFCore.interfaces._content.IContentish
+                 Products.Archetypes.interfaces.IObjectInitializedEvent"
+            handler=".handlers.object_edited" />
+    <subscriber
+            for="Products.CMFCore.interfaces._content.IContentish
+                 Products.Archetypes.interfaces.IObjectEditedEvent"
+            handler=".handlers.object_edited" />
+            
 </configure>
