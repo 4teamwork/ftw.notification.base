@@ -3,3 +3,5 @@
 ftw.notification.base.egg-info
 build
 dist
+*.mo
+*.pyc
