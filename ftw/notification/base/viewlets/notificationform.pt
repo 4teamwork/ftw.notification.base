@@ -1,0 +1,37 @@
+<script>
+    function select_recipients(checked){
+        jq('input[name=to_list:list]').attr('checked', checked);
+    }
+    
+    jq(function(){  
+        jq('#sendNotification').click(function(){
+            var isChecked = jq('#sendNotification').attr('checked');
+            if (!isChecked){
+                jq('#sendNotificationTo').hide('fast');
+            }else{
+                var url = location.href;
+                indexOf = url.indexOf('portal_factory');
+                if(indexOf){
+                    url = location.href.substr(0, indexOf);
+                }
+                jq('#sendNotificationTo').load(url+'@@notification_form_content',function(){
+                    jq('#sendNotificationTo').show('fast')
+                });
+            }
+        });
+        
+    });
+    
+</script>
+
+<div id="archetypes-fieldname-excludeFromNav" class="field ArchetypesBooleanWidget  kssattr-atfieldname-excludeFromNav">
+          
+        <input type="checkbox" id="sendNotification" name="sendNotification:boolean" class="noborder" >
+      
+          <label for="sendNotification" class="formQuestion">Benachrichtigung versenden</label>
+          
+          <div id="sendNotification_help" class="formHelp">Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet</div>
+          
+</div>
+
+<div id="sendNotificationTo"><!--ie fix--></div>
