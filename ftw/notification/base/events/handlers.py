@@ -2,10 +2,8 @@ from DateTime import DateTime
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.events import NotificationEvent
 from ftw.notification.base.interfaces import INotifier
-from Products.CMFCore.interfaces._content import IContentish
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.component import adapter
 from zope.component import getMultiAdapter
 from Products.CMFPlone.utils import safe_unicode
 from zope.event import notify
@@ -43,6 +41,9 @@ def NotificationHandler(event):
                         actor=actor, time=time))
 
 def object_edited(object_, event):
+    # Do nothing if send notification checkbox wasn't checked.
+    if not object_.REQUEST.get('sendNotification', False):
+        return
     sp = getToolByName(object_, 'portal_properties').site_properties
     use_view_action = object_.Type() in  sp.getProperty('typesUseViewActionInListings', ())
     
