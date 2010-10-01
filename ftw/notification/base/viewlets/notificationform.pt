@@ -24,7 +24,7 @@
     
 </script>
 
-<div id="archetypes-fieldname-excludeFromNav" class="field ArchetypesBooleanWidget  kssattr-atfieldname-excludeFromNav">
+<div class="field ArchetypesBooleanWidget">
           
         <input type="checkbox" id="sendNotification" name="sendNotification:boolean" class="noborder" >
       
