@@ -2,11 +2,11 @@ from ftw.table.interfaces import ITableGenerator
 from Products.Five.browser import BrowserView
 from zope import schema
 from zope.component import queryUtility
-
+from Products.CMFPlone.utils import safe_unicode
 
 def name_helper(item, value):
-    title = unicode(item['title'], 'utf-8')
-    value = unicode(item['value'], 'utf-8')
+    title = safe_unicode(item['title'], 'utf-8')
+    value = safe_unicode(item['value'], 'utf-8')
     val = u'%s (%s)' % (title, value)
     return val
 
