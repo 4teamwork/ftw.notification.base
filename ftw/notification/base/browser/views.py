@@ -5,7 +5,10 @@ from zope.component import queryUtility
 
 
 def name_helper(item, value):
-    return u'%s (%s)' % (item['title'], item['value'])
+    title = unicode(item['title'], 'utf-8')
+    value = unicode(item['value'], 'utf-8')
+    val = u'%s (%s)' % (title, value)
+    return val
 
 
 def checkbox_helper(item, value):
