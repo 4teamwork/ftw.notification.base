@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+
+  <object name="ftw.notification-properties" meta_type="Plone Property Sheet">
+    <property name="title">ftw.notification properties</property>
+    <property name="show_notification" type="lines">
+         <element value="File"/>
+         <element value="Event"/>
+         <element value="Document"/>
+         <element value="Folder"/>
+         <element value="Image"/>
+         <element value="Link"/>
+         <element value="News Item"/>
+         <element value="Topic"/>
+    </property>
+</object>
+</object>
