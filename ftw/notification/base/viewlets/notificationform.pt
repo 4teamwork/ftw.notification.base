@@ -24,13 +24,13 @@
     
 </script>
 
-<div class="field ArchetypesBooleanWidget">
+<div class="field ArchetypesBooleanWidget" i18n:domain="ftw.notification.base">
           
         <input type="checkbox" id="sendNotification" name="sendNotification:boolean" class="noborder" >
       
-          <label for="sendNotification" class="formQuestion">Benachrichtigung versenden</label>
+          <label for="sendNotification" class="formQuestion" i18n:translate="">Benachrichtigung versenden</label>
           
-          <div id="sendNotification_help" class="formHelp">Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet</div>
+          <div id="sendNotification_help" class="formHelp" i18n:translate="help_notification">Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet</div>
           
 </div>
 

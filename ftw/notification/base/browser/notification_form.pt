@@ -1,19 +1,30 @@
-<tal:block i18n:domain="izug.arbeitsraum" >
-			<label class="formQuestion">Empf&auml;nger</label>
-			<br />
-			Auswählen: 
-			<script>
-			    function select_recipients(checked){
-			        jq('input[name=to_list:list]').attr('checked', checked);
-			    }
-			    
-			</script>
-			<a href="javascript:select_recipients(true)">alle</a>
-			<a href="javascript:select_recipients(false)">keine</a>
-			
-            <tal:block content="structure view/render_listing" />
-            
-			<label class="formQuestion">Kommentar</label>
-			<textarea rows="10" cols="80" name="comment"></textarea>
-			<br />&nbsp;<br /><br />
+<tal:block i18n:domain="ftw.notification.base">
+    <script>
+        function select_recipients(checked, name){
+            jq('input[name='+name+':list]').attr('checked', checked);
+        }
+    
+    </script>
+
+
+
+    <label class="formQuestion" i18n:translate="">Empf&auml;nger</label>
+    <br />
+    <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
+    <a href="javascript:select_recipients(true, 'to_list')">alle</a>
+    <a href="javascript:select_recipients(false, 'to_list')">keine</a>
+
+    <br />
+
+    <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
+    <a href="javascript:select_recipients(true, 'cc_list')">alle</a>
+    <a href="javascript:select_recipients(false, 'cc_list')">keine</a>
+
+
+
+    <tal:block content="structure view/render_listing" />
+
+    <label class="formQuestion">Kommentar</label>
+    <textarea rows="10" cols="80" name="comment"></textarea>
+    <br />&nbsp;<br /><br />
 </tal:block>

@@ -4,12 +4,12 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="izug.arbeitsraum">
+      i18n:domain="ftw.notification.base">
 
 <body>
 <div metal:fill-slot="main" class="notification_form">
     <metal:main-macro define-macro="main">
-	<h1>Benachrichtigung versenden</h1>
+	<h1 i18n:translate="">Benachrichtigung versenden</h1>
     <form name="sendto_form"
           action="sendto_form"
           method="post"

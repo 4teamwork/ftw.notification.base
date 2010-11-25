@@ -3,6 +3,7 @@ from Products.Five.browser import BrowserView
 from zope import schema
 from zope.component import queryUtility
 from Products.CMFPlone.utils import safe_unicode
+from ftw.notification.base import notification_base_factory as _
 
 def name_helper(item, value):
     title = safe_unicode(item['title'], 'utf-8')
@@ -11,16 +12,30 @@ def name_helper(item, value):
     return val
 
 
-def checkbox_helper(item, value):
+def checkbox_to_helper(item, value):
     return u"""<input type="checkbox"
                       name="to_list:list"
                       value="%s"/>""" % item['value']
 
+def checkbox_cc_helper(item, value):
+    return u"""<input type="checkbox"
+                    name="cc_list:list"
+                    value="%s"/>""" % item['value']
+
 
 class NotificationForm(BrowserView):
 
-    columns = (('', checkbox_helper),
-               ('Name', name_helper), )
+    columns = (
+        {'column': 'to',
+         'column_title': _(u'label_to', default='TO'),
+         'transform': checkbox_to_helper },
+        {'column': 'cc',
+         'column_title': _(u'label_cc', default='CC'),
+         'transform': checkbox_cc_helper },
+        {'column': 'name',
+         'column_title': _(u'label_name', default='Name'),
+         'transform': name_helper}, )
+
 
     @property
     def users(self):
