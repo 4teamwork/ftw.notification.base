@@ -4,7 +4,8 @@ Changelog
 
 1.1c3
 -----
-
+* implemented CC notification
+  [30.11.2010, mathias.leimgruber]
 
 1.1c2
 -----
