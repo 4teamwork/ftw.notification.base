@@ -22,13 +22,17 @@ class AvailableUsersVocabulary(object):
             schema.interfaces.IVocabularyFactory,
             name='assignable_users',
             context=context)
+
         if factory is None:
             factory = component.getUtility(
                 schema.interfaces.IVocabularyFactory,
                 name='plone.principalsource.Users',
                 context=context)
+            items = factory(context)
+        else: 
+            items = factory(context, membersonly=True)
 
-        items = factory(context)
+        
         return items
 
 AvailableUsersVocabularyFactory = AvailableUsersVocabulary()
