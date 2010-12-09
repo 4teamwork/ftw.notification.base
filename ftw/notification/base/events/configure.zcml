@@ -4,6 +4,7 @@
     <subscriber for="..interfaces.INotificationEvent"
                 handler=".handlers.NotificationHandler" />               
 
+
     <subscriber
             for="Products.CMFCore.interfaces._content.IContentish
                  Products.Archetypes.interfaces.IObjectInitializedEvent"

@@ -4,6 +4,9 @@ Changelog
 
 1.1c4
 -----
+* Make notification form available (URL)
+  [09.12.2010, mathias.leimgruber]
+
 * Do not show contact objects for notification (makes no sense).
   Set membersonly = True for assignable_users vocab.
   [02.12.2010, mathias.leimgruber]

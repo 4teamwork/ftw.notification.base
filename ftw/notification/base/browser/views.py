@@ -4,6 +4,7 @@ from zope import schema
 from zope.component import queryUtility
 from Products.CMFPlone.utils import safe_unicode
 from ftw.notification.base import notification_base_factory as _
+from ftw.notification.base.events.handlers import object_edited
 
 def name_helper(item, value):
     title = safe_unicode(item['title'], 'utf-8')
@@ -54,3 +55,11 @@ class NotificationForm(BrowserView):
     def render_listing(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
         return generator.generate(self.users, self.columns, sortable = True)
+        
+
+    def send_notification(self):
+        """Manual call the event"""
+        
+        # set sendNotification in REQUEST
+        self.request.set('sendNotification', 1)
+        object_edited(self.context, None)
