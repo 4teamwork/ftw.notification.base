@@ -1,4 +1,5 @@
 from zope.interface import implements
+from Products.CMFCore.utils import getToolByName
 from zope.schema.interfaces import IVocabularyFactory
 from zope import schema, component
 from zope.app.component.hooks import getSite
@@ -47,7 +48,7 @@ class AvailableGroupsVocabulary(object):
     implements(IVocabularyFactory)
 
     def __call__(self, context):
-        """this utility calls plone.principalsource.Users utility
+        """this utility calls plone.principalsource.Groups utility
         so we can overwrite this one if we want a diffrent source.
         """
         if context is None:
@@ -58,9 +59,15 @@ class AvailableGroupsVocabulary(object):
             name='plone.principalsource.Groups',
             context=context)
         items = factory(context)
-#        import pdb; pdb.set_trace( )
-
+        
         # check permission
-        return items
+        result = []
+        gtool = getToolByName(context, 'portal_groups')
+        for item in items:
+            gid = item.value
+            group = gtool.getGroupById(gid)
+            if sum([group.has_role(r) for r in context.validRoles()]):
+                result.append(item)
+        return result
 
 AvailableGroupsVocabularyFactory = AvailableGroupsVocabulary()
