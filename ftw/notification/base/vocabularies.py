@@ -36,3 +36,31 @@ class AvailableUsersVocabulary(object):
         return items
 
 AvailableUsersVocabularyFactory = AvailableUsersVocabulary()
+
+
+class AvailableGroupsVocabulary(object):
+    """
+    lists all available groups
+
+    """
+
+    implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        """this utility calls plone.principalsource.Users utility
+        so we can overwrite this one if we want a diffrent source.
+        """
+        if context is None:
+            context = getSite()
+
+        factory = component.getUtility(
+            schema.interfaces.IVocabularyFactory,
+            name='plone.principalsource.Groups',
+            context=context)
+        items = factory(context)
+#        import pdb; pdb.set_trace( )
+
+        # check permission
+        return items
+
+AvailableGroupsVocabularyFactory = AvailableGroupsVocabulary()

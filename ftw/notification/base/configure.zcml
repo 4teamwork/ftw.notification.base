@@ -29,6 +29,11 @@
         name="ftw.notification.base.users"
         />
 
+      <utility 
+        component=".vocabularies.AvailableGroupsVocabularyFactory" 
+        name="ftw.notification.base.groups"
+        />
+
     <i18n:registerTranslations directory="locales"/>
 
     <include package=".browser" />    

@@ -3,7 +3,9 @@
         function select_recipients(checked, name){
             jq('input[name='+name+':list]').attr('checked', checked);
         }
-    
+        function select_groups(checked, name){
+            jq('input[name='+name+':list]').attr('checked', checked);
+        }
     </script>
 
 
@@ -23,6 +25,24 @@
 
 
     <tal:block content="structure view/render_listing" />
+
+
+
+
+    <label class="formQuestion" i18n:translate="">Gruppen</label>
+    <br />
+    <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
+    <a href="javascript:select_groups(true, 'to_list_group')">alle</a>
+    <a href="javascript:select_groups(false, 'to_list_group')">keine</a>
+
+    <br />
+
+    <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
+    <a href="javascript:select_groups(true, 'cc_list_group')">alle</a>
+    <a href="javascript:select_groups(false, 'cc_list_group')">keine</a>
+
+    <tal:block content="structure view/render_listing_group" />
+
 
     <label class="formQuestion">Kommentar</label>
     <textarea rows="10" cols="80" name="comment"></textarea>
