@@ -3,7 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from zope.schema.interfaces import IVocabularyFactory
 from zope import schema, component
 from zope.app.component.hooks import getSite
-
+import AccessControl
 
 class AvailableUsersVocabulary(object):
     """
@@ -64,8 +64,28 @@ class AvailableGroupsVocabulary(object):
         result = []
 
         gtool = getToolByName(context, 'portal_groups')
-        sharing = context.unrestrictedTraverse('@@sharing')
-        items = sharing.existing_role_settings()
+        
+        items = []
+        
+        # Change SecurityManager - otherwise we dont receive all users form
+        # existing_role_settings
+        user = getSite().getWrappedOwner()
+        _old_security_manager = AccessControl.getSecurityManager()
+        _new_user = self.context.acl_users.getUserById(user)
+        AccessControl.SecurityManagement.newSecurityManager(
+            context.REQUEST,
+            _new_user)
+        try:
+            sharing = context.unrestrictedTraverse('@@sharing')
+            items = sharing.existing_role_settings()
+        except:
+            AccessControl.SecurityManagement.setSecurityManager(
+                _old_security_manager)
+            raise
+        else:
+            AccessControl.SecurityManagement.setSecurityManager(
+                _old_security_manager)
+        
         for item in items:
             if item['type'] == 'group':
                 gid = item['id']
