@@ -88,7 +88,7 @@ class NotificationForm(BrowserView):
                                context=context)
         if vocabulary:
             groups = vocabulary(context)
-            groups = [dict(title=g.title, value=g.value) for g in groups]
+            groups = [dict(title=g['title'], value=g['id']) for g in groups]
         return groups
 
     def render_listing(self):

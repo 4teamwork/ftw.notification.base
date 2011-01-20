@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-11-25 08:26+0000\n"
+"POT-Creation-Date: 2011-01-20 15:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,13 @@ msgstr ""
 msgid "Benachrichtigung versenden"
 msgstr "Benachrichtigung versenden"
 
-#: ./ftw/notification/base/browser/notification_form.pt:11
+#: ./ftw/notification/base/browser/notification_form.pt:28
 msgid "Empf&auml;nger"
 msgstr "Empfänger"
+
+#: ./ftw/notification/base/browser/notification_form.pt:12
+msgid "Gruppen"
+msgstr ""
 
 #. Default: "Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet"
 #: ./ftw/notification/base/viewlets/notificationform.pt:33
@@ -27,22 +31,22 @@ msgid "help_notification"
 msgstr "Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet"
 
 #. Default: "CC"
-#: ./ftw/notification/base/browser/views.py:33
+#: ./ftw/notification/base/browser/views.py:50
 msgid "label_cc"
 msgstr "CC"
 
 #. Default: "Auswählen CC:"
-#: ./ftw/notification/base/browser/notification_form.pt:19
+#: ./ftw/notification/base/browser/notification_form.pt:20
 msgid "label_choose_cc"
 msgstr "Auswählen CC: "
 
 #. Default: "Auswählen AN:"
-#: ./ftw/notification/base/browser/notification_form.pt:13
+#: ./ftw/notification/base/browser/notification_form.pt:14
 msgid "label_choose_to"
 msgstr "Auswählen AN: "
 
 #. Default: "Name"
-#: ./ftw/notification/base/browser/views.py:36
+#: ./ftw/notification/base/browser/views.py:53
 msgid "label_name"
 msgstr "Name"
 
@@ -52,11 +56,11 @@ msgid "label_send_notification"
 msgstr "Benachrichtigung Senden"
 
 #. Default: "TO"
-#: ./ftw/notification/base/browser/views.py:30
+#: ./ftw/notification/base/browser/views.py:47
 msgid "label_to"
 msgstr "AN"
 
-#: ./ftw/notification/base/events/handlers.py:56
+#: ./ftw/notification/base/events/handlers.py:61
 msgid "statusmessage_no_recipients"
 msgstr "Bitte wählen Sie mindestens 1 Empfänger aus"
 

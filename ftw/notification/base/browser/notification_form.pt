@@ -9,26 +9,6 @@
     </script>
 
 
-
-    <label class="formQuestion" i18n:translate="">Empf&auml;nger</label>
-    <br />
-    <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
-    <a href="javascript:select_recipients(true, 'to_list')">alle</a>
-    <a href="javascript:select_recipients(false, 'to_list')">keine</a>
-
-    <br />
-
-    <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
-    <a href="javascript:select_recipients(true, 'cc_list')">alle</a>
-    <a href="javascript:select_recipients(false, 'cc_list')">keine</a>
-
-
-
-    <tal:block content="structure view/render_listing" />
-
-
-
-
     <label class="formQuestion" i18n:translate="">Gruppen</label>
     <br />
     <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
@@ -42,6 +22,22 @@
     <a href="javascript:select_groups(false, 'cc_list_group')">keine</a>
 
     <tal:block content="structure view/render_listing_group" />
+
+
+
+    <label class="formQuestion" i18n:translate="">Empf&auml;nger</label>
+    <br />
+    <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
+    <a href="javascript:select_recipients(true, 'to_list')">alle</a>
+    <a href="javascript:select_recipients(false, 'to_list')">keine</a>
+
+    <br />
+
+    <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
+    <a href="javascript:select_recipients(true, 'cc_list')">alle</a>
+    <a href="javascript:select_recipients(false, 'cc_list')">keine</a>
+
+    <tal:block content="structure view/render_listing" />
 
 
     <label class="formQuestion">Kommentar</label>

@@ -4,7 +4,9 @@ Changelog
 
 1.1c5
 -----
-
+* Show groups only if they have View permission
+  [20.01.2011, mathias.leimgruber]
+ 
 
 1.1c4
 -----
