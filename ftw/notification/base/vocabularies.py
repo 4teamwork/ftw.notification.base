@@ -3,7 +3,6 @@ from Products.CMFCore.utils import getToolByName
 from zope.schema.interfaces import IVocabularyFactory
 from zope import schema, component
 from zope.app.component.hooks import getSite
-from zope.component import getMultiAdapter
 
 
 class AvailableUsersVocabulary(object):
@@ -65,7 +64,7 @@ class AvailableGroupsVocabulary(object):
         result = []
 
         gtool = getToolByName(context, 'portal_groups')
-        sharing = getMultiAdapter((context, context.REQUEST), name="sharing")
+        sharing = context.unrestrictedTraverse('@@sharing')
         items = sharing.existing_role_settings()
         for item in items:
             if item['type'] == 'group':
