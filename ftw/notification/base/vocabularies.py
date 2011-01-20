@@ -67,16 +67,17 @@ class AvailableGroupsVocabulary(object):
         
         items = []
         
+              
         # Change SecurityManager - otherwise we dont receive all users form
         # existing_role_settings
         user = getSite().getWrappedOwner()
         _old_security_manager = AccessControl.getSecurityManager()
-        _new_user = self.context.acl_users.getUserById(user)
+        _new_user = AccessControl.SecurityManagement.SpecialUsers.system
         AccessControl.SecurityManagement.newSecurityManager(
             context.REQUEST,
             _new_user)
         try:
-            sharing = context.unrestrictedTraverse('@@sharing')
+            sharing = context.restrictedTraverse('@@sharing')
             items = sharing.existing_role_settings()
         except:
             AccessControl.SecurityManagement.setSecurityManager(
@@ -84,8 +85,8 @@ class AvailableGroupsVocabulary(object):
             raise
         else:
             AccessControl.SecurityManagement.setSecurityManager(
-                _old_security_manager)
-        
+                _old_security_manager) 
+
         for item in items:
             if item['type'] == 'group':
                 gid = item['id']

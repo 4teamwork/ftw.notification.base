@@ -79,7 +79,6 @@ class NotificationForm(BrowserView):
             users = [dict(title=t.title, value=t.value) for t in users]
         return users
 
-    @property
     def groups(self):
         context = self.context
         groups = []
@@ -97,7 +96,7 @@ class NotificationForm(BrowserView):
 
     def render_listing_group(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
-        return generator.generate(self.groups, self.columns_group, sortable = True)
+        return generator.generate(self.groups(), self.columns_group, sortable = True)
 
     def send_notification(self):
         """Manual call the event"""
