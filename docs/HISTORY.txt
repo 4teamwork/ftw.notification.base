@@ -2,76 +2,47 @@ Changelog
 =========
 
 
-1.1
----
+1.1 (unreleased)
+----------------
+
+- Nothing changed yet.
 
 
-1.1c5
------
-* Show groups only if they have View permission
-  [20.01.2011, mathias.leimgruber]
+1.1c5 (2011-01-25)
+------------------
+
+- Show groups only if they have View permission
+  [mathias.leimgruber]
 
 
-1.1c4
------
-* Make notification form available (URL)
-  [09.12.2010, mathias.leimgruber]
+1.1c4 (2010-12-22)
+------------------
 
-* Do not show contact objects for notification (makes no sense).
+- Make notification form available (URL)
+  [mathias.leimgruber]
+
+- Do not show contact objects for notification (makes no sense).
   Set membersonly = True for assignable_users vocab.
-  [02.12.2010, mathias.leimgruber]
-
-1.1c3
------
-* implemented CC notification
-  [30.11.2010, mathias.leimgruber]
-
-1.1c2
------
+  [mathias.leimgruber]
 
 
-1.1
----
+1.1c3 (2010-11-30)
+------------------
 
-* Issue #957 Frage - ungueltige Zeichen bei Mailadresse in Kommentarfeld
-  HTML deaktiviert.
-  https://extranet.4teamwork.ch/support/zug/maintlog/957
-  [16.06.2010, vba]
-
-* #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende
-  [27.04.2010, vba]
+- implemented CC notification
+  [mathias.leimgruber]
 
 
-1.0
----
+1.1c2 (2010-10-26)
+------------------
 
-* Fixed the translations, used i18ndude
+- Fixed the translations, used i18ndude
 
-0.5
----
+- Select all recipients.
+  [vba, jone]
 
-* Issue #650: Benachrichtigung - alle Empfaenger selektieren
-  [02.12.2009, jbaumann]
+- Error when no recipients selected.
+  [vba]
 
-* [26.11.2009] Issue #650: Benachrichtigung - alle Empfaenger selektieren [vba]
-
-
-0.4
----
-
-* [04.09.2009] Issue #644: Benachrichtigung - kein Empfaenger ausgewaehlt [vba]
-
-
-0.3
----
-
-* [01.09.2009] Issue #621 Arbeitsraum - Button "senden" nicht aktiv [jba]
-
-
-0.2
----
-* [07.08.2009] Issue #583 Auflistung der Kontakte fuer Benachrichtigung sortiert und Kontakte nur einmal anzeigen [jin]
-
-0.1
----
-* Initial release
+- Sort recipients list.
+  [jin]
