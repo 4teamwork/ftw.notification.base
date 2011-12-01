@@ -2,15 +2,15 @@ Changelog
 =========
 
 
-1.1c6
------
+1.1
+---
 
 
 1.1c5
 -----
 * Show groups only if they have View permission
   [20.01.2011, mathias.leimgruber]
- 
+
 
 1.1c4
 -----
@@ -38,7 +38,7 @@ Changelog
   https://extranet.4teamwork.ch/support/zug/maintlog/957
   [16.06.2010, vba]
 
-* #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende 
+* #902 Arbeitsraum - Vorauswahl bei der Benachrichtigung anhand Sitzungsteilnehmende
   [27.04.2010, vba]
 
 

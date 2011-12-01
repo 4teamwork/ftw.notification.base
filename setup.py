@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = open('ftw/notification/base/version.txt').read().strip()
+version = '1.1dev'
 maintainer = 'Victor Baumann'
 
 setup(name='ftw.notification.base',
