@@ -26,6 +26,7 @@ setup(name='ftw.notification.base',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+        'ftw.table',
           'setuptools',
           # -*- Extra requirements: -*-
       ],
