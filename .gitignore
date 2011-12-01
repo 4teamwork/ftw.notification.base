@@ -1,7 +1,5 @@
-# created by: svn propset svn:ignore -F ./IGNORE.TXT .
-
-ftw.notification.base.egg-info
+*.egg-info
+*.mo
+*.py?
 build
 dist
-*.mo
-*.pyc
