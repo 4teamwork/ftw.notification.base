@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-02 14:16+0000\n"
+"POT-Creation-Date: 2011-12-02 15:49+0000\n"
 "PO-Revision-Date: 2011-12-02 15:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.notification.base\n"
-
-#: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
-msgid "Benachrichtigung versenden"
-msgstr ""
 
 #: ./ftw/notification/base/browser/notification_form.pt:13
 msgid "Groups"
@@ -71,6 +67,7 @@ msgstr ""
 
 #. Default: "Send Notification"
 #: ./ftw/notification/base/events/handlers.py:24
+#: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
 #: ./ftw/notification/base/viewlets/notificationform.pt:31
 msgid "label_send_notification"
 msgstr ""
