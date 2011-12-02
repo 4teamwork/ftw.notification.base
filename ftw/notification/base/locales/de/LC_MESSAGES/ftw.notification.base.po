@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-12-02 13:08+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2011-12-02 15:05+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Empfänger"
 #. Default: "When selected a you can send a Notification after saving."
 #: ./ftw/notification/base/viewlets/notificationform.pt:33
 msgid "help_notification"
-msgstr "Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet"
+msgstr "Wenn ausgewählt wird nach dem Speichern eine Benachrichtigung an die selektierten Benutzer versendet"
 
 #. Default: "all"
 #: ./ftw/notification/base/browser/notification_form.pt:16
@@ -62,13 +62,13 @@ msgstr "Name"
 #. Default: "none"
 #: ./ftw/notification/base/browser/notification_form.pt:17
 msgid "label_none"
-msgstr "keine"
+msgstr "Keine"
 
 #. Default: "Send Notification"
 #: ./ftw/notification/base/events/handlers.py:24
 #: ./ftw/notification/base/viewlets/notificationform.pt:31
 msgid "label_send_notification"
-msgstr "Benachrichtigung Senden"
+msgstr "Benachrichtigung senden"
 
 #. Default: "TO"
 #: ./ftw/notification/base/browser/views.py:47
