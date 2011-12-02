@@ -10,38 +10,38 @@
 
 
     <tal:if condition="view/groups">
-        <label class="formQuestion" i18n:translate="">Gruppen</label>
+        <label class="formQuestion" i18n:translate="">Groups</label>
         <br />
-        <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
-        <a href="javascript:select_groups(true, 'to_list_group')">alle</a>
-        <a href="javascript:select_groups(false, 'to_list_group')">keine</a>
+        <tal:t i18n:translate="label_choose_to">Choose To:</tal:t>
+        <a href="javascript:select_groups(true, 'to_list_group')" i18n:translate="label_all">all</a>
+        <a href="javascript:select_groups(false, 'to_list_group')" i18n:translate="label_none">none</a>
 
         <br />
 
-        <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
-        <a href="javascript:select_groups(true, 'cc_list_group')">alle</a>
-        <a href="javascript:select_groups(false, 'cc_list_group')">keine</a>
+        <tal:t i18n:translate="label_choose_cc">Choose CC:</tal:t>
+        <a href="javascript:select_groups(true, 'cc_list_group')" i18n:translate="label_all">all</a>
+        <a href="javascript:select_groups(false, 'cc_list_group')" i18n:translate="label_none">none</a>
 
         <tal:block content="structure view/render_listing_group" />
     </tal:if>
 
 
-    <label class="formQuestion" i18n:translate="">Empf&auml;nger</label>
+    <label class="formQuestion" i18n:translate="">Recipients</label>
     <br />
-    <tal:t i18n:translate="label_choose_to">Auswählen AN:</tal:t>
-    <a href="javascript:select_recipients(true, 'to_list')">alle</a>
-    <a href="javascript:select_recipients(false, 'to_list')">keine</a>
+    <tal:t i18n:translate="label_choose_to">Choose To:</tal:t>
+    <a href="javascript:select_recipients(true, 'to_list')" i18n:translate="label_all">all</a>
+    <a href="javascript:select_recipients(false, 'to_list')" i18n:translate="label_none">none</a>
 
     <br />
 
-    <tal:t i18n:translate="label_choose_cc">Auswählen CC:</tal:t>
-    <a href="javascript:select_recipients(true, 'cc_list')">alle</a>
-    <a href="javascript:select_recipients(false, 'cc_list')">keine</a>
+    <tal:t i18n:translate="label_choose_cc">Choose CC:</tal:t>
+    <a href="javascript:select_recipients(true, 'cc_list')" i18n:translate="label_all">all</a>
+    <a href="javascript:select_recipients(false, 'cc_list')" i18n:translate="label_none">none</a>
 
     <tal:block content="structure view/render_listing" />
 
 
-    <label class="formQuestion">Kommentar</label>
+    <label class="formQuestion" i18n:translate="label_comment">Comment</label>
     <textarea rows="10" cols="80" name="comment"></textarea>
     <br />&nbsp;<br /><br />
 </tal:block>
