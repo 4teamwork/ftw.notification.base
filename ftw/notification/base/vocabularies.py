@@ -34,7 +34,6 @@ class AvailableUsersVocabulary(object):
         else:
             items = factory(context, membersonly=True)
 
-
         return items
 
 AvailableUsersVocabularyFactory = AvailableUsersVocabulary()
@@ -67,7 +66,6 @@ class AvailableGroupsVocabulary(object):
         gtool = getToolByName(context, 'portal_groups')
 
         items = []
-
 
         # Change SecurityManager - otherwise we dont receive all users form
         # existing_role_settings

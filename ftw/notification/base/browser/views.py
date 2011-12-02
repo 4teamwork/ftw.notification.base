@@ -75,8 +75,8 @@ class NotificationForm(BrowserView):
         context = self.context
         users = []
         vocabulary = queryUtility(schema.interfaces.IVocabularyFactory,
-                               name='ftw.notification.base.users',
-                               context=context)
+                                  name='ftw.notification.base.users',
+                                  context=context)
         if vocabulary:
             users = vocabulary(context)
             # TODO: ftw.table cant handle PrincipalTerm yet. We need to
@@ -88,8 +88,8 @@ class NotificationForm(BrowserView):
         context = self.context
         groups = []
         vocabulary = queryUtility(schema.interfaces.IVocabularyFactory,
-                               name='ftw.notification.base.groups',
-                               context=context)
+                                  name='ftw.notification.base.groups',
+                                  context=context)
         if vocabulary:
             groups = vocabulary(context)
             groups = [dict(title=g['title'], value=g['id']) for g in groups]
@@ -97,12 +97,12 @@ class NotificationForm(BrowserView):
 
     def render_listing(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
-        return generator.generate(self.users, self.columns, sortable = True)
+        return generator.generate(self.users, self.columns, sortable=True)
 
     def render_listing_group(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
         return generator.generate(self.groups(), self.columns_group,
-            sortable=True)
+                                  sortable=True)
 
     def send_notification(self):
         """Manual call the event"""
