@@ -58,7 +58,8 @@ def object_edited(object_, event):
         notify(NotificationEvent(object_, comment))
         object_.REQUEST.RESPONSE.redirect(object_.absolute_url() + (use_view_action and '/view' or '') )
     else:
-        IStatusMessage(object_.REQUEST).addStatusMessage(_(u'statusmessage_no_recipients'), type='error')
+        IStatusMessage(object_.REQUEST).addStatusMessage(_(u'statusmessage_no_recipients',
+            default=u"You have to select at least one recipient"), type='error')
         object_.REQUEST.RESPONSE.redirect(object_.absolute_url() + '/notification_form')            
 
 def add_group_members(context, name):

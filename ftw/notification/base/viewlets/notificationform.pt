@@ -28,9 +28,9 @@
           
         <input type="checkbox" id="sendNotification" name="sendNotification:boolean" class="noborder" >
       
-          <label for="sendNotification" class="formQuestion" i18n:translate="">Benachrichtigung versenden</label>
+          <label for="sendNotification" class="formQuestion" i18n:translate="label_send_notification">Send Notification</label>
           
-          <div id="sendNotification_help" class="formHelp" i18n:translate="help_notification">Wenn ausgewählt wird nach dem speichern eine Benachrichtigung an die selektierten Benutzer versendet</div>
+          <div id="sendNotification_help" class="formHelp" i18n:translate="help_notification">When selected a you can send a Notification after saving.</div>
           
 </div>
 
