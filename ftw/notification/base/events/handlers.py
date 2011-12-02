@@ -10,13 +10,14 @@ from zope.event import notify
 
 
 def NotificationHandler(event):
-    """
+    """The Notification Handler receives a Notification event
+       and calls the Notifier with the required attributes. 
     """
     obj = event.obj
     comment = event.comment
     try:
         notifier = INotifier(obj)
-    except:
+    except TypeError:
         return
 
     if event.action is None:

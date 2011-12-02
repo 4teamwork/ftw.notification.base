@@ -1,7 +1,8 @@
-from zope import schema
-from zope.interface import Interface, Attribute
+# pylint: disable=E0211, E0213
+# E0211: Method has no argument
+# E0213: Method should have "self" as first argument
 
-from ftw.notification.base import notification_base_factory as _
+from zope.interface import Interface, Attribute
 
 
 class INotificationEvent(Interface):
