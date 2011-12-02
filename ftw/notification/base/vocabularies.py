@@ -5,6 +5,7 @@ from zope import schema, component
 from zope.app.component.hooks import getSite
 import AccessControl
 
+
 class AvailableUsersVocabulary(object):
     """
     lists all available users
@@ -30,10 +31,9 @@ class AvailableUsersVocabulary(object):
                 name='plone.principalsource.Users',
                 context=context)
             items = factory(context)
-        else: 
+        else:
             items = factory(context, membersonly=True)
 
-        
         return items
 
 AvailableUsersVocabularyFactory = AvailableUsersVocabulary()
@@ -59,18 +59,16 @@ class AvailableGroupsVocabulary(object):
             name='plone.principalsource.Groups',
             context=context)
         items = factory(context)
-        
+
         # check permission
         result = []
 
         gtool = getToolByName(context, 'portal_groups')
-        
+
         items = []
-        
-              
+
         # Change SecurityManager - otherwise we dont receive all users form
         # existing_role_settings
-        user = getSite().getWrappedOwner()
         _old_security_manager = AccessControl.getSecurityManager()
         _new_user = AccessControl.SecurityManagement.SpecialUsers.system
         AccessControl.SecurityManagement.newSecurityManager(
@@ -85,7 +83,7 @@ class AvailableGroupsVocabulary(object):
             raise
         else:
             AccessControl.SecurityManagement.setSecurityManager(
-                _old_security_manager) 
+                _old_security_manager)
 
         for item in items:
             if item['type'] == 'group':

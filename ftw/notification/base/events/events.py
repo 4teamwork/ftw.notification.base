@@ -1,6 +1,5 @@
-from zope.interface import implements
-
 from ftw.notification.base.interfaces import INotificationEvent
+from zope.interface import implements
 
 
 class NotificationEvent(object):
