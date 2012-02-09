@@ -5,6 +5,7 @@ from zope.component import queryUtility
 from Products.CMFPlone.utils import safe_unicode
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.handlers import object_edited
+from zope.i18n import translate
 
 
 def name_helper(item, value):
@@ -48,27 +49,55 @@ def checkbox_cc_group_helper(item, value):
 
 class NotificationForm(BrowserView):
 
-    columns = (
-        {'column': 'to',
-         'column_title': _(u'label_to', default='TO'),
-         'transform': checkbox_to_helper},
-        {'column': 'cc',
-         'column_title': _(u'label_cc', default='CC'),
-         'transform': checkbox_cc_helper},
-        {'column': 'name',
-         'column_title': _(u'label_name', default='Name'),
-         'transform': name_helper}, )
+    @property
+    def columns(self):
+        return (
+            {'column': 'to',
+             'no_sort': True,
+             'column_title': '<input type="checkbox" id="all-to"/>'\
+                             '<label for="all-to"> %s</label>' % (
+                 translate(u'label_to',
+                           default='TO',
+                           domain="ftw.notification.base",
+                           context=self.request)),
+             'transform': checkbox_to_helper},
+             {'column': 'cc',
+              'no_sort': True,
+              'column_title': '<input type="checkbox" id="all-cc"/>'\
+                               '<label for="all-cc"> %s</label>' % (
+                   translate(u'label_cc',
+                             default='CC',
+                             domain="ftw.notification.base",
+                             context=self.request)),
+              'transform': checkbox_cc_helper},
+             {'column': 'name',
+              'column_title': _(u'label_name', default='Name'),
+              'transform': name_helper})
 
-    columns_group = (
-        {'column': 'to',
-         'column_title': _(u'label_to', default='TO'),
-         'transform': checkbox_to_group_helper},
-        {'column': 'cc',
-         'column_title': _(u'label_cc', default='CC'),
-         'transform': checkbox_cc_group_helper},
-        {'column': 'name',
-         'column_title': _(u'label_name', default='Name'),
-         'transform': groupname_helper}, )
+    @property
+    def columns_group(self):
+        return (
+            {'column': 'to',
+             'no_sort': True,
+             'column_title': '<input type="checkbox" id="all-group-to"/>'\
+                             '<label for="all-group-to"> %s</label>' % (
+                 translate(u'label_to',
+                           default='TO',
+                           domain="ftw.notification.base",
+                           context=self.request)),
+             'transform': checkbox_to_group_helper},
+            {'column': 'cc',
+             'no_sort': True,
+             'column_title': '<input type="checkbox" id="all-group-cc"/>'\
+                              '<label for="all-group-cc"> %s</label>' % (
+                 translate(u'label_cc',
+                           default='CC',
+                           domain="ftw.notification.base",
+                           context=self.request)),
+             'transform': checkbox_cc_group_helper},
+            {'column': 'name',
+             'column_title': _(u'label_name', default='Name'),
+             'transform': groupname_helper})
 
     @property
     def users(self):

@@ -1,43 +1,30 @@
 <tal:block i18n:domain="ftw.notification.base">
     <script>
-        function select_recipients(checked, name){
-            jq('input[name='+name+':list]').attr('checked', checked);
-        }
-        function select_groups(checked, name){
-            jq('input[name='+name+':list]').attr('checked', checked);
-        }
+        jQuery(function($){
+            $('#all-to').click(function() {
+                $('input[name=to_list:list]').attr('checked', $(this).is(':checked'));
+            });
+            $('#all-cc').click(function() {
+                $('input[name=cc_list:list]').attr('checked', $(this).is(':checked'));
+            });
+            $('#all-group-to').click(function() {
+                $('input[name=to_list_group:list]').attr('checked', $(this).is(':checked'));
+            });
+            $('#all-group-cc').click(function() {
+                $('input[name=cc_list_group:list]').attr('checked', $(this).is(':checked'));
+            });
+        });
     </script>
 
 
     <tal:if condition="view/groups">
         <label class="formQuestion" i18n:translate="">Groups</label>
-        <br />
-        <tal:t i18n:translate="label_choose_to">Choose To:</tal:t>
-        <a href="javascript:select_groups(true, 'to_list_group')" i18n:translate="label_all">all</a>
-        <a href="javascript:select_groups(false, 'to_list_group')" i18n:translate="label_none">none</a>
-
-        <br />
-
-        <tal:t i18n:translate="label_choose_cc">Choose CC:</tal:t>
-        <a href="javascript:select_groups(true, 'cc_list_group')" i18n:translate="label_all">all</a>
-        <a href="javascript:select_groups(false, 'cc_list_group')" i18n:translate="label_none">none</a>
-
         <tal:block content="structure view/render_listing_group" />
     </tal:if>
 
 
     <label class="formQuestion" i18n:translate="">Recipients</label>
     <br />
-    <tal:t i18n:translate="label_choose_to">Choose To:</tal:t>
-    <a href="javascript:select_recipients(true, 'to_list')" i18n:translate="label_all">all</a>
-    <a href="javascript:select_recipients(false, 'to_list')" i18n:translate="label_none">none</a>
-
-    <br />
-
-    <tal:t i18n:translate="label_choose_cc">Choose CC:</tal:t>
-    <a href="javascript:select_recipients(true, 'cc_list')" i18n:translate="label_all">all</a>
-    <a href="javascript:select_recipients(false, 'cc_list')" i18n:translate="label_none">none</a>
-
     <tal:block content="structure view/render_listing" />
 
 

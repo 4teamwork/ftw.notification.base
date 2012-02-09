@@ -5,7 +5,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add checkbox in header to select all recipients.
+  [Julian Infanger]
 
 
 1.1c5 (2011-01-25)
