@@ -53,7 +53,6 @@ class NotificationForm(BrowserView):
     def columns(self):
         return (
             {'column': 'to',
-             'no_sort': True,
              'column_title': '<input type="checkbox" id="all-to"/>'\
                              '<label for="all-to"> %s</label>' % (
                  translate(u'label_to',
@@ -62,7 +61,6 @@ class NotificationForm(BrowserView):
                            context=self.request)),
              'transform': checkbox_to_helper},
              {'column': 'cc',
-              'no_sort': True,
               'column_title': '<input type="checkbox" id="all-cc"/>'\
                                '<label for="all-cc"> %s</label>' % (
                    translate(u'label_cc',
@@ -78,7 +76,6 @@ class NotificationForm(BrowserView):
     def columns_group(self):
         return (
             {'column': 'to',
-             'no_sort': True,
              'column_title': '<input type="checkbox" id="all-group-to"/>'\
                              '<label for="all-group-to"> %s</label>' % (
                  translate(u'label_to',
@@ -87,7 +84,6 @@ class NotificationForm(BrowserView):
                            context=self.request)),
              'transform': checkbox_to_group_helper},
             {'column': 'cc',
-             'no_sort': True,
              'column_title': '<input type="checkbox" id="all-group-cc"/>'\
                               '<label for="all-group-cc"> %s</label>' % (
                  translate(u'label_cc',
@@ -126,12 +122,12 @@ class NotificationForm(BrowserView):
 
     def render_listing(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
-        return generator.generate(self.users, self.columns, sortable=True)
+        return generator.generate(self.users, self.columns, sortable=('name'))
 
     def render_listing_group(self):
         generator = queryUtility(ITableGenerator, 'ftw.tablegenerator')
         return generator.generate(self.groups(), self.columns_group,
-                                  sortable=True)
+                                  sortable=('name'))
 
     def send_notification(self):
         """Manual call the event"""
