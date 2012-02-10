@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-02 15:49+0000\n"
+"POT-Creation-Date: 2012-02-10 13:22+0000\n"
 "PO-Revision-Date: 2011-12-02 15:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.notification.base\n"
 
-#: ./ftw/notification/base/browser/notification_form.pt:13
+#: ./ftw/notification/base/browser/notification_form.pt:30
 msgid "Groups"
 msgstr ""
 
-#: ./ftw/notification/base/browser/notification_form.pt:29
+#: ./ftw/notification/base/browser/notification_form.pt:21
 msgid "Recipients"
+msgstr ""
+
+#: ./ftw/notification/base/browser/notification_form.pt:34
+msgid "Users"
 msgstr ""
 
 #. Default: "When selected a you can send a Notification after saving."
@@ -30,39 +34,17 @@ msgstr ""
 msgid "help_notification"
 msgstr ""
 
-#. Default: "all"
-#: ./ftw/notification/base/browser/notification_form.pt:16
-msgid "label_all"
-msgstr ""
-
-#. Default: "CC"
-#: ./ftw/notification/base/browser/views.py:50
 msgid "label_cc"
 msgstr ""
 
-#. Default: "Choose CC:"
-#: ./ftw/notification/base/browser/notification_form.pt:21
-msgid "label_choose_cc"
-msgstr ""
-
-#. Default: "Choose To:"
-#: ./ftw/notification/base/browser/notification_form.pt:15
-msgid "label_choose_to"
-msgstr ""
-
 #. Default: "Comment"
-#: ./ftw/notification/base/browser/notification_form.pt:44
+#: ./ftw/notification/base/browser/notification_form.pt:38
 msgid "label_comment"
 msgstr ""
 
 #. Default: "Name"
-#: ./ftw/notification/base/browser/views.py:53
+#: ./ftw/notification/base/browser/views.py:72
 msgid "label_name"
-msgstr ""
-
-#. Default: "none"
-#: ./ftw/notification/base/browser/notification_form.pt:17
-msgid "label_none"
 msgstr ""
 
 #. Default: "Send Notification"
@@ -72,13 +54,11 @@ msgstr ""
 msgid "label_send_notification"
 msgstr ""
 
-#. Default: "TO"
-#: ./ftw/notification/base/browser/views.py:47
 msgid "label_to"
 msgstr ""
 
 #. Default: "You have to select at least one recipient"
-#: ./ftw/notification/base/events/handlers.py:61
+#: ./ftw/notification/base/events/handlers.py:66
 msgid "statusmessage_no_recipients"
 msgstr ""
 

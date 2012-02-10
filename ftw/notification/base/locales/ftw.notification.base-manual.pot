@@ -22,3 +22,9 @@ msgstr "The message was sent."
 
 msgid "statusmessage_notification_not_sent"
 msgstr "The message couldn't be sent"
+
+msgid "label_to"
+msgstr ""
+
+msgid "label_cc"
+msgstr ""
