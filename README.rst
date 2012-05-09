@@ -48,12 +48,12 @@ Links
 - Package on pypi: http://pypi.python.org/pypi/ftw.notification.base
 
 
-Maintainer
-==========
+Copyright
+---------
 
-This package is produced and maintained by `4teamwork <http://www.4teamwork.ch/>`_ company.
+This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
-
+``ftw.notification.base`` is licensed under GNU General Public License, version 2.
 
 
 .. _ftw.notification.email: https://github.com/4teamwork/ftw.notification.email
