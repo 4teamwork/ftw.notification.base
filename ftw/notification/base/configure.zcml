@@ -15,7 +15,7 @@
       name="default"
       title="ftw.notification.base"
       directory="profiles/default"
-      description="A product to make polls to find out when to have a meeting"
+      description="Base package for dynamic notifications"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
