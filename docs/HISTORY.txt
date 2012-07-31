@@ -2,10 +2,11 @@ Changelog
 =========
 
 
-1.2 (unreleased)
+1.1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Sort users and groups on notification form alphabetically.
+  [mathias.leimgruber]
 
 
 1.1 (2012-03-05)
