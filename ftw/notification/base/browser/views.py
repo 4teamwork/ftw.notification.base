@@ -107,7 +107,7 @@ class NotificationForm(BrowserView):
             # TODO: ftw.table cant handle PrincipalTerm yet. We need to
             # convert to a dict for now
             users = [dict(title=t.title, value=t.value) for t in users]
-            users.sort(lambda x, y: cmp(x['title'].lower(), y['title'].lower()))
+            users.sort(key=lambda user: user['title'].lower())
         return users
 
     def groups(self):
@@ -119,7 +119,7 @@ class NotificationForm(BrowserView):
         if vocabulary:
             groups = vocabulary(context)
             groups = [dict(title=g['title'], value=g['id']) for g in groups]
-            groups.sort(lambda x, y: cmp(x['title'].lower(), y['title'].lower()))
+            groups.sort(key=lambda user: user['title'].lower())
         return groups
 
     def render_listing(self):
