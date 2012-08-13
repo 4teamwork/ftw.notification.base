@@ -6,12 +6,12 @@ from Products.CMFPlone.utils import safe_unicode
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.handlers import object_edited
 from zope.i18n import translate
-
+from Products.CMFCore.utils import getToolByName
 
 def name_helper(item, value):
     title = safe_unicode(item['title'], 'utf-8')
-    value = safe_unicode(item['value'], 'utf-8')
-    val = u'%s (%s)' % (title, value)
+    email = safe_unicode(item['email'], 'utf-8')
+    val = u'%s (%s)' % (title, email)
     return val
 
 
@@ -106,9 +106,18 @@ class NotificationForm(BrowserView):
             users = vocabulary(context)
             # TODO: ftw.table cant handle PrincipalTerm yet. We need to
             # convert to a dict for now
-            users = [dict(title=t.title, value=t.value) for t in users]
-            users.sort(key=lambda user: user['title'].lower())
-        return users
+            memtool = getToolByName(context, 'portal_membership')
+            userlist = []
+            for user in users:
+                userid = user.value
+                member = memtool.getMemberById(userid)
+                if member is None:
+                    continue
+                email = member.getProperty("email")
+                userlist.append(dict(title=user.title, value=userid,
+                                email=email))
+            userlist.sort(key=lambda userlist: userlist['title'].lower())
+        return userlist
 
     def groups(self):
         context = self.context

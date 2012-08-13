@@ -5,6 +5,9 @@ Changelog
 1.1.1 (unreleased)
 ----------------
 
+- Show email instead of user_id on notification_form.
+  [tschanzt]
+
 - Sort users and groups on notification form alphabetically.
   [mathias.leimgruber]
 
