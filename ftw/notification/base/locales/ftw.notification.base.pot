@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-10 13:22+0000\n"
+"POT-Creation-Date: 2012-08-15 13:10+0000\n"
 "PO-Revision-Date: 2011-12-02 15:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.notification.base\n"
 
-#: ./ftw/notification/base/browser/notification_form.pt:30
+#: ./ftw/notification/base/browser/notification_form.pt:29
 msgid "Groups"
 msgstr ""
 
@@ -25,8 +25,38 @@ msgstr ""
 msgid "Recipients"
 msgstr ""
 
-#: ./ftw/notification/base/browser/notification_form.pt:34
+#: ./ftw/notification/base/browser/notification_form.pt:33
 msgid "Users"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./ftw/notification/base/browser/form.py:106
+msgid "button_cancel"
+msgstr ""
+
+#. Default: "Send"
+#: ./ftw/notification/base/browser/form.py:79
+msgid "button_send"
+msgstr ""
+
+#. Default: "Enter one e-mail address per line"
+#: ./ftw/notification/base/browser/form.py:38
+msgid "help_addresses"
+msgstr ""
+
+#. Default: "Enter one e-mail address per line"
+#: ./ftw/notification/base/browser/form.py:45
+msgid "help_cc_addresses"
+msgstr ""
+
+#. Default: "Select users to notificate per cc."
+#: ./ftw/notification/base/browser/form.py:29
+msgid "help_cc_users"
+msgstr ""
+
+#. Default: "Enter a comment which will be contained in the notification E-Mail"
+#: ./ftw/notification/base/browser/form.py:53
+msgid "help_comment"
 msgstr ""
 
 #. Default: "When selected a you can send a Notification after saving."
@@ -34,17 +64,43 @@ msgstr ""
 msgid "help_notification"
 msgstr ""
 
+#. Default: "Select users to notificate."
+#: ./ftw/notification/base/browser/form.py:20
+msgid "help_users"
+msgstr ""
+
+#. Default: "E-Mail Addresses"
+#: ./ftw/notification/base/browser/form.py:37
+msgid "label_addresses"
+msgstr ""
+
 msgid "label_cc"
 msgstr ""
 
+#. Default: "CC E-Mail Addresses"
+#: ./ftw/notification/base/browser/form.py:44
+msgid "label_cc_addresses"
+msgstr ""
+
+#. Default: "CC Users"
+#: ./ftw/notification/base/browser/form.py:28
+msgid "label_cc_users"
+msgstr ""
+
 #. Default: "Comment"
-#: ./ftw/notification/base/browser/notification_form.pt:38
+#: ./ftw/notification/base/browser/form.py:52
+#: ./ftw/notification/base/browser/notification_form.pt:37
 msgid "label_comment"
 msgstr ""
 
 #. Default: "Name"
 #: ./ftw/notification/base/browser/views.py:72
 msgid "label_name"
+msgstr ""
+
+#. Default: "Notificate"
+#: ./ftw/notification/base/browser/form.py:61
+msgid "label_notificte"
 msgstr ""
 
 #. Default: "Send Notification"
@@ -55,6 +111,11 @@ msgid "label_send_notification"
 msgstr ""
 
 msgid "label_to"
+msgstr ""
+
+#. Default: "Users"
+#: ./ftw/notification/base/browser/form.py:19
+msgid "label_users"
 msgstr ""
 
 #. Default: "You have to select at least one recipient"

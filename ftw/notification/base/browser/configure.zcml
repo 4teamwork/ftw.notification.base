@@ -12,5 +12,11 @@
 		allowed_attributes="send_notification"
         />
 
+  <browser:page
+      for="*"
+      name="notification_form"
+      class=".form.NotificationFormView"
+      permission="zope2.View"
+      />
 
 </configure>
