@@ -137,7 +137,7 @@ class NotificationUsersVocabulary(object):
                         if role_type == u'user':
                             if name not in users:
                                 users.add(name)
-                        elif role_type == u'group' and u'Reader' in roles:
+                        elif role_type == u'group':
                             if user not in groups:
                                 groups.add(name)
 
