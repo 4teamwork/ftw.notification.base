@@ -2,10 +2,14 @@ Changelog
 =========
 
 
-1.1.2 (unreleased)
-------------------
+1.2 (unreleased)
+----------------
 
-- Nothing changed yet.
+- Added preselect functionality.
+  [mathias.leimgruber]
+
+- Sort users and groups on notification form alphabetically.
+  [mathias.leimgruber]
 
 
 1.1.1 (2012-08-13)
@@ -13,9 +17,6 @@ Changelog
 
 - Show email instead of user_id on notification_form.
   [tschanzt]
-
-- Sort users and groups on notification form alphabetically.
-  [mathias.leimgruber]
 
 
 1.1 (2012-03-05)
