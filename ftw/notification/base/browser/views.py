@@ -1,18 +1,19 @@
-from ftw.table.interfaces import ITableGenerator
-from Products.Five.browser import BrowserView
-from zope import schema
-from zope.component import queryUtility
-from Products.CMFPlone.utils import safe_unicode
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.handlers import object_edited
-from zope.i18n import translate
+from ftw.table.interfaces import ITableGenerator
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope import schema
+from zope.component import queryUtility
+from zope.i18n import translate
 
 
 def name_helper(item, value):
     title = safe_unicode(item['title'], 'utf-8')
-    value = safe_unicode(item['value'], 'utf-8')
-    val = u'%s (%s)' % (title, value)
+    email = safe_unicode(item['email'], 'utf-8')
+    val = u'%s (%s)' % (title, email)
     return val
 
 
@@ -117,16 +118,23 @@ class NotificationForm(BrowserView):
     @property
     def users(self):
         context = self.context
-        users = []
+        memtool = getToolByName(context, 'portal_membership')
         vocabulary = queryUtility(schema.interfaces.IVocabularyFactory,
                                   name='ftw.notification.base.users',
                                   context=context)
         if vocabulary:
             users = vocabulary(context)
+
             finalized = []
             for t in users:
+                userid = t.value
+                member = memtool.getMemberById(userid)
+                if member is None:
+                    continue
+
                 user = dict(title=t.title,
                             value=t.value,
+                            email=member.getProperty("email", ""), 
                             selected=t.value in self.pre_select)
                 finalized.append(user)
 
