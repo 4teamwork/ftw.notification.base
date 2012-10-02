@@ -2,8 +2,11 @@ Changelog
 =========
 
 
-1.1.1 (unreleased)
+1.2 (unreleased)
 ----------------
+
+- Added preselect functionality.
+  [mathias.leimgruber]
 
 - Sort users and groups on notification form alphabetically.
   [mathias.leimgruber]

@@ -6,6 +6,7 @@ from Products.CMFPlone.utils import safe_unicode
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.handlers import object_edited
 from zope.i18n import translate
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 def name_helper(item, value):
@@ -23,7 +24,13 @@ def groupname_helper(item, value):
     return val
 
 
-def checkbox_to_helper(item, value):
+def checkbox_to_selected_helper(item, value):
+    if item['selected'] == True:
+        return u"""<input type="checkbox"
+                          name="to_list:list"
+                          checked="checked"
+                          value="%s"/>""" % item['value']
+
     return u"""<input type="checkbox"
                       name="to_list:list"
                       value="%s"/>""" % item['value']
@@ -49,42 +56,54 @@ def checkbox_cc_group_helper(item, value):
 
 class NotificationForm(BrowserView):
 
+    template = ViewPageTemplateFile('notification_form.pt')
+
+    pre_select = None
+
+    def __init__(self, context, request):
+        super(NotificationForm, self).__init__(context, request)
+        # TODO: pre_select should be filled by an adapter call
+        self.pre_select = []
+
+    def __call__(self):
+        return self.template()
+
     @property
     def columns(self):
         return (
             {'column': 'to',
-             'column_title': '<input type="checkbox" id="all-to"/>'\
+             'column_title': '<input type="checkbox" id="all-to"/>'
                              '<label for="all-to"> %s</label>' % (
-                 translate(u'label_to',
-                           default='TO',
-                           domain="ftw.notification.base",
-                           context=self.request)),
-             'transform': checkbox_to_helper},
-             {'column': 'cc',
-              'column_title': '<input type="checkbox" id="all-cc"/>'\
-                               '<label for="all-cc"> %s</label>' % (
-                   translate(u'label_cc',
+                                 translate(u'label_to',
+                                           default='TO',
+                                           domain="ftw.notification.base",
+                                           context=self.request)),
+             'transform': checkbox_to_selected_helper},
+            {'column': 'cc',
+             'column_title': '<input type="checkbox" id="all-cc"/>'
+             '<label for="all-cc"> %s</label>' % (
+                 translate(u'label_cc',
                              default='CC',
                              domain="ftw.notification.base",
                              context=self.request)),
-              'transform': checkbox_cc_helper},
-             {'column': 'name',
-              'column_title': _(u'label_name', default='Name'),
-              'transform': name_helper})
+             'transform': checkbox_cc_helper},
+            {'column': 'name',
+             'column_title': _(u'label_name', default='Name'),
+             'transform': name_helper})
 
     @property
     def columns_group(self):
         return (
             {'column': 'to',
-             'column_title': '<input type="checkbox" id="all-group-to"/>'\
+             'column_title': '<input type="checkbox" id="all-group-to"/>'
                              '<label for="all-group-to"> %s</label>' % (
-                 translate(u'label_to',
-                           default='TO',
+                                 translate(u'label_to',
+                                           default='TO',
                            domain="ftw.notification.base",
                            context=self.request)),
              'transform': checkbox_to_group_helper},
             {'column': 'cc',
-             'column_title': '<input type="checkbox" id="all-group-cc"/>'\
+             'column_title': '<input type="checkbox" id="all-group-cc"/>'
                               '<label for="all-group-cc"> %s</label>' % (
                  translate(u'label_cc',
                            default='CC',
@@ -104,11 +123,15 @@ class NotificationForm(BrowserView):
                                   context=context)
         if vocabulary:
             users = vocabulary(context)
-            # TODO: ftw.table cant handle PrincipalTerm yet. We need to
-            # convert to a dict for now
-            users = [dict(title=t.title, value=t.value) for t in users]
-            users.sort(key=lambda user: user['title'].lower())
-        return users
+            finalized = []
+            for t in users:
+                user = dict(title=t.title,
+                            value=t.value,
+                            selected=t.value in self.pre_select)
+                finalized.append(user)
+
+            finalized.sort(key=lambda user: user['title'].lower())
+        return finalized
 
     def groups(self):
         context = self.context
