@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
+1.2.1 (2012-11-16)
 ------------------
 
 - Do not show "Send notification" checkbox when product is not installed.
