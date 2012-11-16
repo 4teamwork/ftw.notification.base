@@ -18,7 +18,7 @@ class NotificationForm(common.ViewletBase):
         # notification properties
         np = getattr(pp, 'ftw.notification-properties', [])
         if not np:
-            return True
+            return False
 
         return self.context.portal_type in np.show_notification
 

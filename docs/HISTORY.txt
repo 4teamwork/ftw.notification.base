@@ -5,7 +5,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not show "Send notification" checkbox when product is not installed.
+  [jone]
 
 
 1.2 (2012-10-16)
