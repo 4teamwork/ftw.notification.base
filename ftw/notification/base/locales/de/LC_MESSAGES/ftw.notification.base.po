@@ -118,7 +118,7 @@ msgstr ""
 #. Default: "You have to select at least one recipient"
 #: ./ftw/notification/base/events/handlers.py:66
 msgid "statusmessage_no_recipients"
-msgstr "Bitte wählen Sie mindestens 1 Empfänger aus"
+msgstr "Bitte wählen Sie mindestens 1 Empfänger (AN) aus."
 
 #. Default: "The message couldn't be sent"
 msgid "statusmessage_notification_not_sent"
@@ -127,5 +127,3 @@ msgstr "Nachricht wurde nicht versendet"
 #. Default: "The message was sent."
 msgid "statusmessage_notification_sent"
 msgstr "Nachricht wurde versendet"
-
-
