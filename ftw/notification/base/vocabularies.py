@@ -2,14 +2,11 @@ from AccessControl.Permission import Permission
 from AccessControl.interfaces import IRoleManager
 from Acquisition import aq_base, aq_parent, aq_inner
 from Products.CMFCore.utils import getToolByName
-from plone.app.workflow.interfaces import ISharingPageRole
 from zope import schema, component
 from zope.app.component.hooks import getSite
-from zope.component import getUtilitiesFor
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
-import AccessControl
 
 
 class PrincipalVocabulary(SimpleVocabulary):
@@ -31,8 +28,8 @@ class PrincipalVocabulary(SimpleVocabulary):
                     fullname = userid
                 email = user.getProperty('email', '')
                 if email:
-                    yield self.__class__.createTerm(userid,
-                                                    str(email),
+                    yield self.__class__.createTerm(str(email),
+                                                    userid,
                                                     fullname)
 
         for groupid in self.groupids:
