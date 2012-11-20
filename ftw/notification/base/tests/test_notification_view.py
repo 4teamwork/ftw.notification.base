@@ -19,5 +19,5 @@ class TestAddressBlockCreation(TestCase):
 
     def test_view_registered(self):
         view = queryMultiAdapter((self.folder, self.folder.REQUEST),
-                                 name="notification")
+                                 name="notification_view")
         self.assertIsNotNone(view)

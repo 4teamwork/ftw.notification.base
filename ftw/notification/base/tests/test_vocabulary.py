@@ -128,7 +128,7 @@ class TestVocabulary(TestCase):
 
         # Control
         vocabulary = getVocabularyRegistry().get(
-            self.folder,
+            self.folder2,
             'ftw.notification.base.users')
         self.assertEquals([], [item.token for item in vocabulary])
 
