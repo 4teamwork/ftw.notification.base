@@ -3,19 +3,18 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="ftw.notification.base">
 
-    <browser:page
-        for="*"
-        name="notification_form_content"
-		class=".views.NotificationForm"
-        permission="zope2.View"
-		allowed_attributes="send_notification"
-        />
+  <browser:resourceDirectory
+    name="ftw.notification.base.resources"
+    directory="resources"
+    />
 
   <browser:page
-      for="*"
-      name="notification_form"
-      class=".form.NotificationFormView"
-      permission="zope2.View"
-      />
+    for="*"
+    name="notification_form"
+    class=".notification.NotificationView"
+    permission="zope2.View"
+    allowed_attributes="json_source json_source_by_group"
+    />
+
 
 </configure>

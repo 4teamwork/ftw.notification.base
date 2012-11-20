@@ -22,7 +22,6 @@ class PrincipalVocabulary(SimpleVocabulary):
     def _get_terms(self):
         portal = getSite()
         acl_users = getToolByName(portal, 'acl_users')
-        gtool = getToolByName(portal, 'portal_groups')
 
         for userid in self.userids:
             user = acl_users.getUserById(userid)
@@ -30,7 +29,11 @@ class PrincipalVocabulary(SimpleVocabulary):
                 fullname = user.getProperty('fullname', userid)
                 if not fullname:
                     fullname = userid
-                yield self.__class__.createTerm(userid, str(userid), userid)
+                email = user.getProperty('email', '')
+                if email:
+                    yield self.__class__.createTerm(userid,
+                                                    str(email),
+                                                    fullname)
 
         for groupid in self.groupids:
             group = acl_users.getGroupById(groupid)
@@ -53,7 +56,7 @@ class PrincipalVocabulary(SimpleVocabulary):
             query[i] = word.strip()
 
         for v in self:
-            if self._compare(query, v.value):
+            if self._compare(query, v.title):
                 yield v
 
     def _compare(self, query, value):

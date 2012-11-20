@@ -6,10 +6,24 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="ftw.notification.base">
 
+<head>
+  <metal:js fill-slot="javascript_head_slot">
+    <script type="text/javascript"
+            tal:attributes="src string:${here/portal_url}/++resource++ftw.notification.base.resources/jquery.tokeninput.js">js code</script>
+    <script type="text/javascript"
+            tal:attributes="src string:${here/portal_url}/++resource++ftw.notification.base.resources/integration.js">js code</script>
+
+  </metal:js>
+
+  <metal:css fill-slot="style_slot">
+    <link rel="stylesheet"  media="screen" tal:attributes="href string:${here/portal_url}/++resource++ftw.notification.base.resources/token-input-facebook.css" />
+  </metal:css>
+</head>
+
 <body>
 <div metal:fill-slot="main" class="notification_form">
     <metal:main-macro define-macro="main">
-	<h1 i18n:translate="label_send_notification">Send Notification</h1>
+    <h1 i18n:translate="label_send_notification">Send Notification</h1>
     <form name="sendto_form"
           action="sendto_form"
           method="post"
@@ -17,12 +31,20 @@
           tal:attributes="action string:${here/getId}/${template/getId}">
 
 
-		<tal:wrapper tal:content="structure here/@@notification_form_content" />
+      <div class="field">
+        <label class="formQuestion" for="user-to" i18n:translate="To">
+          To
+        </label>
+        <div class="fieldErrorBox"></div>
+        <input type="text" id="users-to" name="users-to" />
+      </div>
 
-		
+
+
+        
         <div class="formControls" i18n:domain="plone">
-	
-		  <input type="hidden" name="form.submitted" value="1" />
+    
+          <input type="hidden" name="form.submitted" value="1" />
           <input class="context"
                  tabindex=""
                  type="submit"
@@ -39,7 +61,7 @@
                  />                    
         </div>
 
-	</form>
+    </form>
   </metal:main-macro>
 </div>
 

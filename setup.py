@@ -4,10 +4,14 @@ import os
 version = '1.2.1.dev0'
 maintainer = 'Jonas Baumann'
 
+tests_require = ['ftw.testing',
+                 'plone.app.testing',
+                 'plone.mocktestcase', ]
+
 setup(name='ftw.notification.base',
       version=version,
       description='Send notifications when editing a plone content.',
-      long_description=open('README.rst').read() + '\n' + \
+      long_description=open('README.rst').read() + '\n' +
           open(os.path.join('docs', 'HISTORY.txt')).read(),
 
       # Get more strings from
@@ -33,7 +37,8 @@ setup(name='ftw.notification.base',
       namespace_packages=['ftw', 'ftw.notification'],
       include_package_data=True,
       zip_safe=False,
-
+      tests_require=tests_require,
+      extras_require=dict(tests=tests_require),
       install_requires=[
         'setuptools',
         'ftw.table',
