@@ -57,12 +57,30 @@ class NotificationForm(BrowserView):
         result = []
         gtool = getToolByName(self.context, 'portal_groups')
         group = gtool.getGroupById(groupid)
+
         for member in group.getGroupMembers():
             name = "%s &lt;%s&gt;" % (
                 member.getProperty('fullname', member.getId()),
                 member.getProperty('email', ''))
             result.append({'id': member.getId(),
                            'name': name})
+        return json.dumps(result)
+
+    def json_pre_select(self):
+        vocabulary = getVocabularyRegistry().get(
+            self.context,
+            'ftw.notification.base.users')
+        result = []
+        for userid in self.pre_select:
+            if userid in vocabulary.userids:
+                mtool = getToolByName(self.context, 'portal_membership')
+                member = mtool.getMemberById(userid)
+                email = member.getProperty('email', '')
+                title = member.getProperty('fullname', member.getId())
+                name = "%s &lt;%s&gt;" % (title, email)
+                _id = email
+
+                result.append({'id': _id, 'name': name})
         return json.dumps(result)
 
     def send_notification(self):

@@ -116,6 +116,27 @@ class TestNotificationView(TestCase):
             '{"id": "user2", "name": "fullname2 &lt;user2@email.com&gt;"}',
             view.json_source_by_group())
 
+    def test_json_pre_select(self):
+        self.portal.portal_membership.setLocalRoles(
+            obj=self.folder,
+            member_ids=['user1', 'user2'],
+            member_role="Manager",
+            reindex=True)
+
+        view = queryMultiAdapter((self.folder, self.folder.REQUEST),
+                                 name="notification_form")
+        view.pre_select = ['user1', 'user2', 'user3']
+        self.assertIn(
+            '{"id": "user1@email.com", "name": "fullname1 '
+            '&lt;user1@email.com&gt;"}',
+            view.json_pre_select())
+        self.assertIn(
+            '{"id": "user2@email.com", "name": "fullname2 '
+            '&lt;user2@email.com&gt;"}',
+            view.json_pre_select())
+        # user3 is not in vocabulary
+        self.assertNotIn('user3', view.json_pre_select())
+
     def tearDown(self):
         super(TestNotificationView, self).tearDown()
         portal = self.layer['portal']
