@@ -1,5 +1,5 @@
-function initTokenInput(){
-  $('#users-to').tokenInput($('base').attr('href') + 'notification_form/json_source', {
+function initTokenInput(input, old_values){
+  $('#'+input).tokenInput($('base').attr('href') + 'notification_form/json_source', {
       theme: "facebook",
       tokenDelimiter: ",",
       tokenValue: "id",
@@ -13,24 +13,23 @@ function initTokenInput(){
         if (item.id.substr(0, 6) === 'group:'){
           $.getJSON($('base').attr('href') + 'notification_form/json_source_by_group', {'groupid': item.id.substr(6)}, function(data){
             $.each(data, function(i, o){
-              $('#users-to').tokenInput("add", {id: o.id, name: o.name});
+              $('#'+input).tokenInput("add", {id: o.id, name: o.name});
             });
           });
-          $('#users-to').tokenInput("remove", item);
+          $('#'+input).tokenInput("remove", item);
         }
 
       return false;
       },
       onDelete: function(event){
         $(this).closest('.field').removeClass('error');
-      }
-      //prePopulate: oldValues
-
+      },
+      prePopulate: old_values
   });
 
   $(document).keypress(function(e) {
       var value = $("#token-input-users-to").val();
-      var trigger = $('#users-to');
+      var trigger = $('#'+input);
       var field = trigger.closest('.field');
       if(e.keyCode == 13) {
         if($("#token-input-users-to").is(":focus")) {
@@ -52,8 +51,3 @@ function initTokenInput(){
     });
 
 }
-
-
-$(function(){
-  initTokenInput();
-});

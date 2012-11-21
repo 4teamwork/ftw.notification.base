@@ -51,10 +51,12 @@ class TestNotificationView(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "user1", "name": "fullname1 &lt;user1@email.com&gt;"}',
+            '{"id": "user1@email.com", "name": "fullname1 '
+            '&lt;user1@email.com&gt;"}',
             view.json_source())
         self.assertIn(
-            '{"id": "user2", "name": "fullname2 &lt;user2@email.com&gt;"}',
+            '{"id": "user2@email.com", "name": "fullname2 '
+            '&lt;user2@email.com&gt;"}',
             view.json_source())
 
     def test_json_source_groups(self):
@@ -79,10 +81,12 @@ class TestNotificationView(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "user1", "name": "fullname1 &lt;user1@email.com&gt;"}',
+            '{"id": "user1@email.com", "name": "fullname1 '
+            '&lt;user1@email.com&gt;"}',
             view.json_source())
         self.assertIn(
-            '{"id": "user2", "name": "fullname2 &lt;user2@email.com&gt;"}',
+            '{"id": "user2@email.com", "name": "fullname2 '
+            '&lt;user2@email.com&gt;"}',
             view.json_source())
         self.assertIn(
             '{"id": "group:group1", "name": "Group 1"}',

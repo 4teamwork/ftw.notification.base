@@ -3,6 +3,7 @@ import json
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.schema.vocabulary import getVocabularyRegistry
 from Products.CMFCore.utils import getToolByName
+from ftw.notification.base.events.handlers import object_edited
 
 
 class NotificationForm(BrowserView):
@@ -36,13 +37,13 @@ class NotificationForm(BrowserView):
 
             elif getattr(term, 'email', None):
                 name = "%s &lt;%s&gt;" % (term.title, term.email)
-                _id = term.token
+                _id = term.email
 
             else:
                 member = mtool.getMemberById(term.token)
                 email = member.getProperty('email', '')
                 name = "%s &lt;%s&gt;" % (term.title, email)
-                _id = term.token
+                _id = email
 
             result.append({'id': _id, 'name': name})
         return json.dumps(result)
@@ -63,3 +64,11 @@ class NotificationForm(BrowserView):
             result.append({'id': member.getId(),
                            'name': name})
         return json.dumps(result)
+
+    def send_notification(self):
+        """Manual call the event"""
+
+        # set sendNotification in REQUEST
+        self.request.set('sendNotification', 1)
+        self.request.set('to_list', self.request.get('users-to'))
+        object_edited(self.context, None)

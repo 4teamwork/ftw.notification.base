@@ -13,6 +13,14 @@
     <script type="text/javascript"
             tal:attributes="src string:${here/portal_url}/++resource++ftw.notification.base.resources/integration.js">js code</script>
 
+    <script type="text/javascript">
+
+      $(function(){
+        initTokenInput('users-to', []);
+      });
+
+    </script>
+
   </metal:js>
 
   <metal:css fill-slot="style_slot">
