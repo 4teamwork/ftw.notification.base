@@ -11,7 +11,7 @@
   <browser:page
     for="*"
     name="notification_form"
-    class=".notification.NotificationView"
+    class=".notification.NotificationForm"
     permission="zope2.View"
     allowed_attributes="json_source json_source_by_group"
     />

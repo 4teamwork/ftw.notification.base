@@ -5,14 +5,15 @@ from zope.schema.vocabulary import getVocabularyRegistry
 from Products.CMFCore.utils import getToolByName
 
 
-class NotificationView(BrowserView):
+class NotificationForm(BrowserView):
     """ Notification system
     """
 
     template = ViewPageTemplateFile('notification.pt')
 
     def __init__(self, context, request):
-        super(NotificationView, self).__init__(context, request)
+        super(NotificationForm, self).__init__(context, request)
+        self.pre_select = []
 
     def __call__(self):
         return self.template()
