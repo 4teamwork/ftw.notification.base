@@ -42,6 +42,7 @@ setup(name='ftw.notification.base',
       install_requires=[
         'setuptools',
         'ftw.table',
+        'plone.principalsource',
         ],
 
       entry_points='''
