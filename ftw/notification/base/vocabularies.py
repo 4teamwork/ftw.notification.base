@@ -7,6 +7,19 @@ from zope.app.component.hooks import getSite
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
+from plone.principalsource.term import PrincipalTerm
+
+
+class EmailPrincipalTerm(PrincipalTerm):
+    """Simple tokenized term used by SimpleVocabulary.
+    Extended by email.
+    """
+    def __init__(self, value, type, token=None, title=None, email=None):
+        super(EmailPrincipalTerm,
+              self).__init__(value, type, token, title)
+        if email is None:
+            email = str(token)
+        self.email = email
 
 
 class PrincipalVocabulary(SimpleVocabulary):
@@ -28,9 +41,11 @@ class PrincipalVocabulary(SimpleVocabulary):
                     fullname = userid
                 email = user.getProperty('email', '')
                 if email:
-                    yield self.__class__.createTerm(str(email),
-                                                    userid,
-                                                    fullname)
+                    yield EmailPrincipalTerm(userid,
+                                             'user',
+                                             token=userid,
+                                             title=fullname,
+                                             email=email)
 
         for groupid in self.groupids:
             group = acl_users.getGroupById(groupid)
@@ -38,8 +53,10 @@ class PrincipalVocabulary(SimpleVocabulary):
                 title = group.getProperty('title')
                 if not title:
                     title = groupid
-                groupid = 'group:%s' % (groupid)
-                yield self.__class__.createTerm(groupid, str(groupid), title)
+                yield EmailPrincipalTerm(groupid,
+                                    'group',
+                                    token=groupid,
+                                    title=title)
 
     def search(self, query_string):
         """search method for `z3c.formwidget.autocomplete` support. Returns
@@ -53,32 +70,25 @@ class PrincipalVocabulary(SimpleVocabulary):
             query[i] = word.strip()
 
         for v in self:
-            if self._compare(query, v.title):
+            to_search = "%s %s" % (v.title, v.email)
+            if self._compare(query, to_search):
                 yield v
 
     def _compare(self, query, value):
         """ Compares each word in the query string seperate.
-
-        Example 1:
-        Given value: Hugo Boss
-        Query "hu bo" matches
-        Query "bo hu" matches
-        Query "boh" doesnt match (its not fuzzy matching yet)
-        Query "hub" doesnt match
-
-        Example 2:
-        Given value: Eingangskorb Mandant 1
-        Query "m 1" matches
-        Query "m 1 eing" matches
-        Query "m1" doesnt match
+        Example:
+        Given value: Zaphod Beeblebrox
+        Query "za be" matches
+        Query "be za" matches
+        Query "phodbee" doesnt match (its not fuzzy matching yet)
         """
-
         if not value:
             return False
         value = isinstance(value, str) and \
             value.decode('utf8').lower() or value.lower()
         for word in query:
-            if len(word) > 0 and word not in value:
+            lword = word.lower()
+            if len(word) > 0 and lword not in value:
                 return False
         return True
 
@@ -110,7 +120,7 @@ class NotificationUsersVocabulary(object):
 
             factory = component.getUtility(
                 schema.interfaces.IVocabularyFactory,
-                name='plone.principalsource.Users',
+                name='plone.principalsource.Principals',
                 context=self.context)
             return factory(self.context)
 
@@ -134,12 +144,12 @@ class NotificationUsersVocabulary(object):
                 # Use dict's to auto. prevent duplicated entries
                 for user, roles, role_type, name in userroles:
                     if set(roles) & set(allowed_roles_to_view):
-                        if role_type == u'user':
-                            if name not in users:
-                                users.add(name)
-                        elif role_type == u'group':
+                        if role_type == u'group':
                             if user not in groups:
                                 groups.add(name)
+                        else:
+                            if name not in users:
+                                users.add(name)
 
                 if getattr(aq_base(context), '__ac_local_roles_block__', None):
                     cont = False
