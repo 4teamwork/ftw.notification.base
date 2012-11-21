@@ -20,6 +20,7 @@ class NotificationView(BrowserView):
     def json_source(self):
         """Returns the filtered result as json
         """
+        mtool = getToolByName(self.context, 'portal_membership')
         vocabulary = getVocabularyRegistry().get(
             self.context,
             'ftw.notification.base.users')
@@ -28,8 +29,21 @@ class NotificationView(BrowserView):
         terms = vocabulary.search(search_term)
         result = []
         for term in terms:
-            result.append({'id': term.token, 'name': "%s &lt;%s&gt;" %
-                (term.title, term.value)})
+            if term.type == 'group':
+                name = term.title
+                _id = 'group:%s' % term.token
+
+            elif getattr(term, 'email', None):
+                name = "%s &lt;%s&gt;" % (term.title, term.email)
+                _id = term.token
+
+            else:
+                member = mtool.getMemberById(term.token)
+                email = member.getProperty('email', '')
+                name = "%s &lt;%s&gt;" % (term.title, email)
+                _id = term.token
+
+            result.append({'id': _id, 'name': name})
         return json.dumps(result)
 
     def json_source_by_group(self):
@@ -37,11 +51,14 @@ class NotificationView(BrowserView):
         """
         groupid = self.request.get('groupid', '')
         if not groupid:
-            return []
+            return json.dumps([])
         result = []
         gtool = getToolByName(self.context, 'portal_groups')
         group = gtool.getGroupById(groupid)
         for member in group.getGroupMembers():
+            name = "%s &lt;%s&gt;" % (
+                member.getProperty('fullname', member.getId()),
+                member.getProperty('email', ''))
             result.append({'id': member.getId(),
-                           'name': member.getProperty('email')})
+                           'name': name})
         return json.dumps(result)
