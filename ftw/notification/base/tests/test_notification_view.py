@@ -1,16 +1,44 @@
 from AccessControl.interfaces import IRoleManager
+from ftw.notification.base.browser.notification import extract_email
+from ftw.notification.base.browser.notification import validmails
+from ftw.notification.base.testing import FTW_NOTIFICATION_FUNCTIONAL_TESTING
 from ftw.notification.base.testing import FTW_NOTIFICATION_INTEGRATION_TESTING
+from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
+from plone.testing.z2 import Browser
 from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
 from zope.component import queryMultiAdapter
+import transaction
 
 
-class TestNotificationView(TestCase):
+class TestNotificationViewUnit(TestCase):
+
+    def test_extract_email(self):
+        data = 'user1@email.com,user2@email.com,user3@email.com'
+        self.assertEquals(
+            extract_email(data),
+            ['user1@email.com', 'user2@email.com', 'user3@email.com'])
+        self.assertEquals(extract_email(''), [])
+
+    def test_validmails(self):
+        data = ['user1@email.com', 'user2@email.com', 'user3@email.com']
+        self.assertEquals(data, validmails(data))
+
+        data = ['@email.com', 'user2@email.com', 'user3@email.com']
+        self.assertEquals(['user2@email.com', 'user3@email.com'],
+                          validmails(data))
+
+        data = ['@email.com', 'user2@email', 'user3']
+        self.assertEquals([],
+                          validmails(data))
+
+
+class TestNotificationViewIntegration(TestCase):
 
     layer = FTW_NOTIFICATION_INTEGRATION_TESTING
 
     def setUp(self):
-        super(TestNotificationView, self).setUp()
+        super(TestNotificationViewIntegration, self).setUp()
         self.portal = self.layer['portal']
         self.portal_url = self.portal.portal_url()
 
@@ -138,6 +166,70 @@ class TestNotificationView(TestCase):
         self.assertNotIn('user3', view.json_pre_select())
 
     def tearDown(self):
-        super(TestNotificationView, self).tearDown()
+        super(TestNotificationViewIntegration, self).tearDown()
         portal = self.layer['portal']
         portal.manage_delObjects(['folder'])
+
+
+class TestNotificationViewFunctional(TestCase):
+
+    layer = FTW_NOTIFICATION_FUNCTIONAL_TESTING
+
+    def setUp(self):
+        super(TestNotificationViewFunctional, self).setUp()
+        self.portal = self.layer['portal']
+        self.portal_url = self.portal.portal_url()
+
+        self.folder = self.portal.get(
+            self.portal.invokeFactory('Folder', 'folder'))
+        # Fire all necessary events
+        self.folder.processForm()
+
+        regtool = getToolByName(self.portal, 'portal_registration')
+        regtool.addMember('user1', 'user1',
+                          properties={'username': 'user1',
+                                      'fullname': 'fullname1',
+                                      'email': 'user1@email.com'})
+        regtool.addMember('user2', 'user2',
+                          properties={'username': 'user2',
+                                      'fullname': 'fullname2',
+                                      'email': 'user2@email.com'})
+
+        transaction.commit()
+
+        # Browser setup
+        self.browser = Browser(self.layer['app'])
+        self.browser.handleErrors = False
+
+    def test_form(self):
+        self.browser.addHeader('Authorization', 'Basic %s:%s' % (
+            TEST_USER_NAME, TEST_USER_PASSWORD, ))
+
+        url = self.folder.absolute_url() + '/notification_form'
+        self.browser.open(url)
+
+        # Sent empty form
+        self.browser.getControl('Send').click()
+        # Stay on form
+        self.assertEquals(self.browser.url, url)
+
+        # Invalid email
+        self.browser.getControl(
+            name='users-to').value = "user1@email.com,invalidaddr"
+        self.browser.getControl('Send').click()
+        # Stay on form
+        self.assertEquals(self.browser.url, url)
+
+        # Valid email addresses
+        self.browser.getControl(
+            name='users-to').value = "user1@email.com,user2@email.com"
+        self.browser.getControl('Send').click()
+        # Redirect to content
+        self.assertEquals(self.browser.url, self.folder.absolute_url())
+
+    def tearDown(self):
+        super(TestNotificationViewFunctional, self).tearDown()
+        portal = self.layer['portal']
+        portal.manage_delObjects(['folder'])
+        transaction.commit()
+

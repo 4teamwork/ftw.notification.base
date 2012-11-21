@@ -41,7 +41,6 @@ class NotificationForm(BrowserView):
     def __call__(self):
         if self.request.get('form.submitted', False):
             recipients = extract_email(self.request.get('users-to', ''))
-            import ipdb; ipdb.set_trace()
             if len(recipients) == 0:
                 IStatusMessage(self.request).addStatusMessage(
                     _(u'statusmessage_no_recipients',
