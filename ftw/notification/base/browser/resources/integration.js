@@ -1,4 +1,4 @@
-function initTokenInput(input, old_values){
+function initTokenInput(input, pre_select){
   $('#'+input).tokenInput($('base').attr('href') + 'notification_form/json_source', {
       theme: "facebook",
       tokenDelimiter: ",",
@@ -9,7 +9,6 @@ function initTokenInput(input, old_values){
       onAdd: function(item){
         $this = $(this);
         $this.closest('.field').removeClass('error');
-        console.info(item);
         if (item.id.substr(0, 6) === 'group:'){
           $.getJSON($('base').attr('href') + 'notification_form/json_source_by_group', {'groupid': item.id.substr(6)}, function(data){
             $.each(data, function(i, o){
@@ -24,7 +23,7 @@ function initTokenInput(input, old_values){
       onDelete: function(event){
         $(this).closest('.field').removeClass('error');
       },
-      prePopulate: old_values
+      prePopulate: pre_select
   });
 
   $(document).keypress(function(e) {

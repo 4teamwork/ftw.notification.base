@@ -13,12 +13,11 @@
     <script type="text/javascript"
             tal:attributes="src string:${here/portal_url}/++resource++ftw.notification.base.resources/integration.js">js code</script>
 
-    <script type="text/javascript">
-
+    <script type="text/javascript" tal:define="pre_select view/json_pre_select"
+            tal:content="structure string:
       $(function(){
-        initTokenInput('users-to', []);
-      });
-
+        initTokenInput('users-to', ${pre_select});
+      });">
     </script>
 
   </metal:js>
