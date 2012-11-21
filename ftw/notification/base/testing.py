@@ -15,8 +15,11 @@ class FtwNotificationLayer(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load ZCML
         import ftw.notification.base
+        import plone.principalsource
 
         xmlconfig.file('configure.zcml', ftw.notification.base,
+                       context=configurationContext)
+        xmlconfig.file('configure.zcml', plone.principalsource,
                        context=configurationContext)
 
         # installProduct() is *only* necessary for packages outside
