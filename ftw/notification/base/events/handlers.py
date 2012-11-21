@@ -3,7 +3,6 @@ from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.events import NotificationEvent
 from ftw.notification.base.interfaces import INotifier
 from Products.CMFCore.utils import getToolByName
-from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
 from Products.CMFPlone.utils import safe_unicode
 from zope.event import notify

@@ -14,9 +14,9 @@ class EmailPrincipalTerm(PrincipalTerm):
     """Simple tokenized term used by SimpleVocabulary.
     Extended by email.
     """
-    def __init__(self, value, type, token=None, title=None, email=None):
+    def __init__(self, value, type_, token=None, title=None, email=None):
         super(EmailPrincipalTerm,
-              self).__init__(value, type, token, title)
+              self).__init__(value, type_, token, title)
         if email is None:
             email = str(token)
         self.email = email
@@ -96,6 +96,9 @@ class PrincipalVocabulary(SimpleVocabulary):
 class NotificationUsersVocabulary(object):
 
     implements(IVocabularyFactory)
+
+    def __init__(self):
+        self.context = None
 
     def roles_of_permission(self, permission):
         """Return all roles wich have the given permission
