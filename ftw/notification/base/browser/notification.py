@@ -41,6 +41,7 @@ class NotificationForm(BrowserView):
     def __call__(self):
         if self.request.get('form.submitted', False):
             recipients = extract_email(self.request.get('users-to', ''))
+            cc = extract_email(self.request.get('users-cc', ''))
             if len(recipients) == 0:
                 IStatusMessage(self.request).addStatusMessage(
                     _(u'statusmessage_no_recipients',
@@ -48,7 +49,7 @@ class NotificationForm(BrowserView):
                     type='error')
                 return self.template()
 
-            if len(validmails(recipients)) != len(recipients):
+            if len(validmails(recipients + cc)) != len(recipients + cc):
                 IStatusMessage(self.request).addStatusMessage(
                     _(u'statusmessage_invalid_mail',
                       default=u"You entered one or more invalid recipient(s)"),
@@ -56,6 +57,7 @@ class NotificationForm(BrowserView):
                 return self.template()
 
             self.request.set('to_list', recipients)
+            self.request.set('cc_list', cc)
             self.send_notification()
 
         return self.template()

@@ -213,6 +213,13 @@ class TestNotificationViewFunctional(TestCase):
         # Stay on form
         self.assertEquals(self.browser.url, url)
 
+        # Send only cc
+        self.browser.getControl(
+            name='users-cc').value = "user1@email.com,user2@email.com"
+        self.browser.getControl('Send').click()
+        # Stay on form
+        self.assertEquals(self.browser.url, url)
+
         # Invalid email
         self.browser.getControl(
             name='users-to').value = "user1@email.com,invalidaddr"
@@ -223,6 +230,8 @@ class TestNotificationViewFunctional(TestCase):
         # Valid email addresses
         self.browser.getControl(
             name='users-to').value = "user1@email.com,user2@email.com"
+        self.browser.getControl(
+            name='users-cc').value = "user3@email.com,user4@email.com"
         self.browser.getControl('Send').click()
         # Redirect to content
         self.assertEquals(self.browser.url, self.folder.absolute_url())
@@ -232,4 +241,3 @@ class TestNotificationViewFunctional(TestCase):
         portal = self.layer['portal']
         portal.manage_delObjects(['folder'])
         transaction.commit()
-

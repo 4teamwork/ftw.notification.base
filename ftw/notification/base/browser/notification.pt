@@ -17,6 +17,7 @@
             tal:content="structure string:
       $(function(){
         initTokenInput('users-to', ${pre_select});
+        initTokenInput('users-cc', []);
       });">
     </script>
 
@@ -39,13 +40,20 @@
 
 
       <div class="field">
-        <label class="formQuestion" for="user-to" i18n:translate="To">
+        <label class="formQuestion" for="user-to" i18n:translate="">
           To
         </label>
         <div class="fieldErrorBox"></div>
         <input type="text" id="users-to" name="users-to" />
       </div>
 
+      <div class="field">
+        <label class="formQuestion" for="user-cc" i18n:translate="">
+          CC
+        </label>
+        <div class="fieldErrorBox"></div>
+        <input type="text" id="users-cc" name="users-cc" />
+      </div>
 
 
         
