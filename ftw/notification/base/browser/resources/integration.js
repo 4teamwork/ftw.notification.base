@@ -1,4 +1,4 @@
-function initTokenInput(input, pre_select){
+function initTokenInput(input, pre_select, allow_new){
   $('#'+input).tokenInput($('base').attr('href') + 'notification_form/json_source', {
       theme: "facebook",
       tokenDelimiter: ",",
@@ -31,6 +31,10 @@ function initTokenInput(input, pre_select){
       var trigger = $('#'+input);
       var field = trigger.closest('.field');
       if(e.keyCode == 13) {
+        if (!allow_new){
+          return false;
+        }
+
         if($("#token-input-users-to").is(":focus")) {
           e.preventDefault();
           if (value.length === 0){

@@ -13,11 +13,12 @@
     <script type="text/javascript"
             tal:attributes="src string:${here/portal_url}/++resource++ftw.notification.base.resources/integration.js">js code</script>
 
-    <script type="text/javascript" tal:define="pre_select view/json_pre_select"
+    <script type="text/javascript" tal:define="pre_select view/json_pre_select;
+                                               allow_new python:str(view.allow_email_not_in_vocab()).lower()"
             tal:content="structure string:
       $(function(){
-        initTokenInput('users-to', ${pre_select});
-        initTokenInput('users-cc', []);
+        initTokenInput('users-to', ${pre_select}, ${allow_new});
+        initTokenInput('users-cc', [], ${allow_new});
       });">
     </script>
 

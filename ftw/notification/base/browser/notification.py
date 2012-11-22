@@ -1,4 +1,5 @@
 from ftw.notification.base import notification_base_factory as _
+from ftw.notification.base.utils import NotificationUtils
 from ftw.notification.base.events.handlers import object_edited
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -37,23 +38,17 @@ class NotificationForm(BrowserView):
     def __init__(self, context, request):
         super(NotificationForm, self).__init__(context, request)
         self.pre_select = []
+        self.vocabulary = None
 
     def __call__(self):
+        self.vocabulary = getVocabularyRegistry().get(
+            self.context,
+            'ftw.notification.base.users')
+
         if self.request.get('form.submitted', False):
             recipients = extract_email(self.request.get('users-to', ''))
             cc = extract_email(self.request.get('users-cc', ''))
-            if len(recipients) == 0:
-                IStatusMessage(self.request).addStatusMessage(
-                    _(u'statusmessage_no_recipients',
-                      default=u"You have to select at least one recipient"),
-                    type='error')
-                return self.template()
-
-            if len(validmails(recipients + cc)) != len(recipients + cc):
-                IStatusMessage(self.request).addStatusMessage(
-                    _(u'statusmessage_invalid_mail',
-                      default=u"You entered one or more invalid recipient(s)"),
-                    type='error')
+            if not self._validate(recipients, cc):
                 return self.template()
 
             self.request.set('to_list', recipients)
@@ -61,6 +56,29 @@ class NotificationForm(BrowserView):
             self.send_notification()
 
         return self.template()
+
+    def _validate(self, recipients, cc):
+        if len(recipients) == 0:
+            IStatusMessage(self.request).addStatusMessage(
+                _(u'statusmessage_no_recipients',
+                  default=u"You have to select at least one recipient"),
+                type='error')
+            return False
+
+        if len(validmails(recipients + cc)) != len(recipients + cc):
+            IStatusMessage(self.request).addStatusMessage(
+                _(u'statusmessage_invalid_mail',
+                  default=u"You entered one or more invalid recipient(s)"),
+                type='error')
+            return False
+
+        # XXX Add Server side check, if email addr is allowed
+
+        return True
+
+    def allow_email_not_in_vocab(self):
+        utils = NotificationUtils(self.context)
+        return utils.has_anonymous_role()
 
     def json_source(self):
         """Returns the filtered result as json

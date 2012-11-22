@@ -1,13 +1,12 @@
-from AccessControl.Permission import Permission
-from AccessControl.interfaces import IRoleManager
 from Acquisition import aq_base, aq_parent, aq_inner
+from ftw.notification.base.utils import NotificationUtils
+from plone.principalsource.term import PrincipalTerm
 from Products.CMFCore.utils import getToolByName
 from zope import schema, component
 from zope.app.component.hooks import getSite
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
-from plone.principalsource.term import PrincipalTerm
 
 
 class EmailPrincipalTerm(PrincipalTerm):
@@ -100,26 +99,19 @@ class NotificationUsersVocabulary(object):
     def __init__(self):
         self.context = None
 
-    def roles_of_permission(self, permission):
-        """Return all roles wich have the given permission
-        on the current context."""
+    def use_plone_principal_user_source(self):
 
-        role_manager = IRoleManager(self.context)
-        for p in role_manager.ac_inherited_permissions(1):
-            name, value = p[:2]
-            if name == permission:
-                p = Permission(name, value, role_manager)
-                roles = p.getRoles()
-                return roles
+        return bool(self.utils.has_anonymous_role()
+                or self.utils.has_authenticaded_role())
 
     def __call__(self, context):
         self.context = context
+        self.utils = NotificationUtils(self.context)
 
         gtool = getToolByName(self.context, 'portal_groups')
-        allowed_roles_to_view = self.roles_of_permission('View')
+        allowed_roles_to_view = self.utils.roles_of_permission('View')
 
-        if 'Anonymous' in allowed_roles_to_view \
-                or 'Authenticated' in allowed_roles_to_view:
+        if self.use_plone_principal_user_source():
 
             factory = component.getUtility(
                 schema.interfaces.IVocabularyFactory,
