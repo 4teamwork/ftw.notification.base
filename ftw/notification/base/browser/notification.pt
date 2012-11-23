@@ -56,6 +56,14 @@
         <input type="text" id="users-cc" name="users-cc" />
       </div>
 
+      <div class="field">
+        <label class="formQuestion" for="comment" i18n:translate="">
+          Comment
+        </label>
+        <div class="fieldErrorBox"></div>
+        <textarea type="text" id="comment" name="comment"></textarea>
+      </div>
+
 
         
         <div class="formControls" i18n:domain="plone">
