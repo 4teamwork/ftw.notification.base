@@ -1,5 +1,11 @@
 function initTokenInput(input, pre_select, allow_new){
-  $('#'+input).tokenInput($('base').attr('href') + 'notification_form/json_source', {
+
+  var bhref = $('base').attr('href');
+  if(bhref.substr(bhref.length-1,1)!='/'){
+      bhref += "/";
+  }
+
+  $('#'+input).tokenInput(bhref + 'notification_form/json_source', {
       theme: "facebook",
       tokenDelimiter: ",",
       tokenValue: "id",
@@ -10,7 +16,7 @@ function initTokenInput(input, pre_select, allow_new){
         $this = $(this);
         $this.closest('.field').removeClass('error');
         if (item.id.substr(0, 6) === 'group:'){
-          $.getJSON($('base').attr('href') + 'notification_form/json_source_by_group', {'groupid': item.id.substr(6)}, function(data){
+          $.getJSON(bhref + 'notification_form/json_source_by_group', {'groupid': item.id.substr(6)}, function(data){
             $.each(data, function(i, o){
               $('#'+input).tokenInput("add", {id: o.id, name: o.name});
             });
