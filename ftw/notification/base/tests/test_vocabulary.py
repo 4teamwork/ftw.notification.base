@@ -30,19 +30,19 @@ class TestVocabulary(TestCase):
         regtool = getToolByName(self.portal, 'portal_registration')
         regtool.addMember('user1', 'user1',
                           properties={'username': 'user1',
-                                      'fullname': 'fullname1',
+                                      'fullname': 'f\xc3\xbcllname1',
                                       'email': 'user1@email.com'})
         regtool.addMember('user2', 'user2',
                           properties={'username': 'user2',
-                                      'fullname': 'fullname2',
+                                      'fullname': 'f\xc3\xbcllname2',
                                       'email': 'user2@email.com'})
         regtool.addMember('user3', 'user3',
                           properties={'username': 'user3',
-                                      'fullname': 'fullname3',
+                                      'fullname': 'f\xc3\xbcllname3',
                                       'email': 'user3@email.com'})
         regtool.addMember('user4', 'user4',
                           properties={'username': 'user4',
-                                      'fullname': 'fullname4',
+                                      'fullname': 'f\xc3\xbcllname4',
                                       'email': 'user4@email.com'})
         regtool.addMember('user5', 'user5')
 
@@ -62,7 +62,7 @@ class TestVocabulary(TestCase):
         # User
         terms = tuple(PrincipalVocabulary(['user1'], [])._get_terms())
         self.assertEquals(terms[0].token, 'user1')
-        self.assertEquals(terms[0].title, 'fullname1')
+        self.assertEquals(terms[0].title, 'f\xc3\xbcllname1')
         self.assertEquals(terms[0].type, 'user')
         self.assertEquals(terms[0].value, 'user1')
         self.assertEquals(terms[0].email, 'user1@email.com')
@@ -92,7 +92,7 @@ class TestVocabulary(TestCase):
     def test_principal_vocabulary_search(self):
         # Search for fullname
         terms = tuple(PrincipalVocabulary(
-            ['user1', 'user2'], []).search('fullname1'))
+            ['user1', 'user2'], []).search('f\xc3\xbcllname1'))
         self.assertEquals(len(terms), 1)
         self.assertEquals(terms[0].token, 'user1')
 
@@ -104,7 +104,7 @@ class TestVocabulary(TestCase):
         self.assertEquals(terms[1].token, 'user2')
 
         # no result
-        terms = tuple(PrincipalVocabulary([], []).search('fullname1'))
+        terms = tuple(PrincipalVocabulary([], []).search('f\xc3\xbcllname1'))
         self.assertEquals(len(terms), 0)
 
     def test_principal_vocabulary_compair(self):

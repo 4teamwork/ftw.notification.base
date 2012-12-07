@@ -51,11 +51,11 @@ class TestNotificationViewIntegration(TestCase):
         regtool = getToolByName(self.portal, 'portal_registration')
         regtool.addMember('user1', 'user1',
                           properties={'username': 'user1',
-                                      'fullname': 'fullname1',
+                                      'fullname': 'f\xc3\xbcllname1',
                                       'email': 'user1@email.com'})
         regtool.addMember('user2', 'user2',
                           properties={'username': 'user2',
-                                      'fullname': 'fullname2',
+                                      'fullname': 'f\xc3\xbcllname2',
                                       'email': 'user2@email.com'})
 
         self.groups_tool = getToolByName(self.portal, 'portal_groups')
@@ -80,11 +80,11 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            json.loads('{"id": "user1@email.com", "text": "f\xc3\xbcllname1 '
             '[user1@email.com]"}'),
             json.loads(view.json_source()))
         self.assertIn(
-            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            json.loads('{"id": "user2@email.com", "text": "f\xc3\xbcllname2 '
             '[user2@email.com]"}'),
             json.loads(view.json_source()))
 
@@ -110,11 +110,11 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            json.loads('{"id": "user1@email.com", "text": "f\xc3\xbcllname1 '
             '[user1@email.com]"}'),
             json.loads(view.json_source()))
         self.assertIn(
-            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            json.loads('{"id": "user2@email.com", "text": "f\xc3\xbcllname2 '
             '[user2@email.com]"}'),
             json.loads(view.json_source()))
         self.assertIn(
@@ -139,10 +139,11 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            json.loads('{"id": "user1", "text": "fullname1 [user1@email.com]"}'),
+            json.loads('{"id": "user1", "text": "f\xc3\xbcllname1 '
+                       '[user1@email.com]"}'),
             json.loads(view.json_source_by_group()))
         self.assertIn(
-            json.loads('{"id": "user2", "text": "fullname2 '
+            json.loads('{"id": "user2", "text": "f\xc3\xbcllname2 '
                        '[user2@email.com]"}'),
             json.loads(view.json_source_by_group()))
 
@@ -157,11 +158,11 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
         view.pre_select = ['user1', 'user2', 'user3']
         self.assertIn(
-            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            json.loads('{"id": "user1@email.com", "text": "f\xc3\xbcllname1 '
             '[user1@email.com]"}'),
             json.loads(view.json_pre_select()))
         self.assertIn(
-            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            json.loads('{"id": "user2@email.com", "text": "f\xc3\xbcllname2 '
             '[user2@email.com]"}'),
             json.loads(view.json_pre_select()))
         # user3 is not in vocabulary
@@ -190,11 +191,11 @@ class TestNotificationViewFunctional(TestCase):
         regtool = getToolByName(self.portal, 'portal_registration')
         regtool.addMember('user1', 'user1',
                           properties={'username': 'user1',
-                                      'fullname': 'fullname1',
+                                      'fullname': 'f\xc3\xbcllname1',
                                       'email': 'user1@email.com'})
         regtool.addMember('user2', 'user2',
                           properties={'username': 'user2',
-                                      'fullname': 'fullname2',
+                                      'fullname': 'f\xc3\xbcllname2',
                                       'email': 'user2@email.com'})
 
         transaction.commit()
