@@ -29,6 +29,12 @@ def validmails(recipients):
     return valid
 
 
+def to_utf8(value):
+    if isinstance(value, unicode):
+        value = value.encode('utf-8')
+    return value
+
+
 class NotificationForm(BrowserView):
     """ Notification system
     """
@@ -89,21 +95,27 @@ class NotificationForm(BrowserView):
             'ftw.notification.base.users')
 
         search_term = self.request.get('q', '')
-        terms = vocabulary.search(search_term)
+        # Decode to utf-8 because the plone.principal users vocab
+        # needs a unicode to search
+
+        terms = vocabulary.search(search_term.decode('utf-8'))
         result = []
         for term in terms:
+            token = to_utf8(term.token)
+            title = to_utf8(term.title)
             if term.type == 'group':
-                name = term.title
-                _id = 'group:%s' % term.token
+                name = title
+                _id = 'group:%s' % token
 
             elif getattr(term, 'email', None):
-                name = "%s [%s]" % (term.title, term.email)
+                # term.email is utf8 encoded
+                name = "%s [%s]" % (title, term.email)
                 _id = term.email
 
             else:
-                member = mtool.getMemberById(term.token)
+                member = mtool.getMemberById(token)
                 email = member.getProperty('email', '')
-                name = "%s [%s]" % (term.title, email)
+                name = "%s [%s]" % (title, email)
                 _id = email
 
             result.append({'id': _id, 'text': name})

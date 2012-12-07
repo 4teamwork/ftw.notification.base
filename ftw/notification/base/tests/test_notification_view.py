@@ -1,6 +1,7 @@
 from AccessControl.interfaces import IRoleManager
 from ftw.notification.base.browser.notification import extract_email
 from ftw.notification.base.browser.notification import validmails
+from ftw.notification.base.browser.notification import to_utf8
 from ftw.notification.base.testing import FTW_NOTIFICATION_FUNCTIONAL_TESTING
 from ftw.notification.base.testing import FTW_NOTIFICATION_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
@@ -32,6 +33,16 @@ class TestNotificationViewUnit(TestCase):
         data = ['@email.com', 'user2@email', 'user3']
         self.assertEquals([],
                           validmails(data))
+
+    def test_to_utf8(self):
+        # UTF8
+        data = 'f\xc3\xbcllname'
+        self.assertEquals(data, to_utf8(data))
+
+        # Unicode
+        data = u'f\xfcllname'
+        self.assertNotEquals(data, to_utf8(data))
+        self.assertEquals('f\xc3\xbcllname', to_utf8(data))
 
 
 class TestNotificationViewIntegration(TestCase):
@@ -122,6 +133,18 @@ class TestNotificationViewIntegration(TestCase):
             json.loads(view.json_source()))
         self.assertIn(
             json.loads('{"id": "group:group2", "text": "Group 2"}'),
+            json.loads(view.json_source()))
+
+    def test_json_source_users_plone_principal_search(self):
+        manager = IRoleManager(self.folder)
+        manager.manage_role('Anonymous', permissions=['View'])
+        self.folder.REQUEST.set('q', 'f\xc3\xbcllname1')
+        view = queryMultiAdapter((self.folder, self.folder.REQUEST),
+                                 name="notification_form")
+
+        self.assertIn(
+            json.loads('{"id": "user1@email.com", "text": "f\xc3\xbcllname1 '
+            '[user1@email.com]"}'),
             json.loads(view.json_source()))
 
     def test_json_source_by_group_no_id(self):

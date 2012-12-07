@@ -62,8 +62,9 @@ class PrincipalVocabulary(SimpleVocabulary):
         all matching contacts.
         """
 
-        query_string = isinstance(query_string, str) and \
-            query_string.decode('utf8') or query_string
+        if isinstance(query_string, unicode):
+            query_string = query_string.encode('utf-8')
+
         query = query_string.lower().split(' ')
         for i, word in enumerate(query):
             query[i] = word.strip()
@@ -87,8 +88,10 @@ class PrincipalVocabulary(SimpleVocabulary):
         value = isinstance(value, str) and \
             value.decode('utf8').lower() or value.lower()
         for word in query:
-            lword = word.lower()
-            if len(word) > 0 and lword not in value:
+            word = isinstance(word, str) and \
+                word.decode('utf8').lower() or word.lower()
+
+            if len(word) > 0 and word not in value:
                 return False
         return True
 
