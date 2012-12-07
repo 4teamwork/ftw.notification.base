@@ -9,6 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
 from zope.component import queryMultiAdapter
 import transaction
+import json
 
 
 class TestNotificationViewUnit(TestCase):
@@ -79,13 +80,13 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "user1@email.com", "name": "fullname1 '
-            '&lt;user1@email.com&gt;"}',
-            view.json_source())
+            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            '[user1@email.com]"}'),
+            json.loads(view.json_source()))
         self.assertIn(
-            '{"id": "user2@email.com", "name": "fullname2 '
-            '&lt;user2@email.com&gt;"}',
-            view.json_source())
+            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            '[user2@email.com]"}'),
+            json.loads(view.json_source()))
 
     def test_json_source_groups(self):
         self.folder.manage_addLocalRoles('group1', ['Manager'])
@@ -95,11 +96,11 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "group:group1", "name": "Group 1"}',
-            view.json_source())
+            json.loads('{"id": "group:group1", "text": "Group 1"}'),
+            json.loads(view.json_source()))
         self.assertIn(
-            '{"id": "group:group2", "name": "Group 2"}',
-            view.json_source())
+            json.loads('{"id": "group:group2", "text": "Group 2"}'),
+            json.loads(view.json_source()))
 
     def test_json_source_users_plone_principal(self):
         manager = IRoleManager(self.folder)
@@ -109,19 +110,19 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "user1@email.com", "name": "fullname1 '
-            '&lt;user1@email.com&gt;"}',
-            view.json_source())
+            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            '[user1@email.com]"}'),
+            json.loads(view.json_source()))
         self.assertIn(
-            '{"id": "user2@email.com", "name": "fullname2 '
-            '&lt;user2@email.com&gt;"}',
-            view.json_source())
+            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            '[user2@email.com]"}'),
+            json.loads(view.json_source()))
         self.assertIn(
-            '{"id": "group:group1", "name": "Group 1"}',
-            view.json_source())
+            json.loads('{"id": "group:group1", "text": "Group 1"}'),
+            json.loads(view.json_source()))
         self.assertIn(
-            '{"id": "group:group2", "name": "Group 2"}',
-            view.json_source())
+            json.loads('{"id": "group:group2", "text": "Group 2"}'),
+            json.loads(view.json_source()))
 
     def test_json_source_by_group_no_id(self):
         view = queryMultiAdapter((self.folder, self.folder.REQUEST),
@@ -138,11 +139,12 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
 
         self.assertIn(
-            '{"id": "user1", "name": "fullname1 &lt;user1@email.com&gt;"}',
-            view.json_source_by_group())
+            json.loads('{"id": "user1", "text": "fullname1 [user1@email.com]"}'),
+            json.loads(view.json_source_by_group()))
         self.assertIn(
-            '{"id": "user2", "name": "fullname2 &lt;user2@email.com&gt;"}',
-            view.json_source_by_group())
+            json.loads('{"id": "user2", "text": "fullname2 '
+                       '[user2@email.com]"}'),
+            json.loads(view.json_source_by_group()))
 
     def test_json_pre_select(self):
         self.portal.portal_membership.setLocalRoles(
@@ -155,13 +157,13 @@ class TestNotificationViewIntegration(TestCase):
                                  name="notification_form")
         view.pre_select = ['user1', 'user2', 'user3']
         self.assertIn(
-            '{"id": "user1@email.com", "name": "fullname1 '
-            '&lt;user1@email.com&gt;"}',
-            view.json_pre_select())
+            json.loads('{"id": "user1@email.com", "text": "fullname1 '
+            '[user1@email.com]"}'),
+            json.loads(view.json_pre_select()))
         self.assertIn(
-            '{"id": "user2@email.com", "name": "fullname2 '
-            '&lt;user2@email.com&gt;"}',
-            view.json_pre_select())
+            json.loads('{"id": "user2@email.com", "text": "fullname2 '
+            '[user2@email.com]"}'),
+            json.loads(view.json_pre_select()))
         # user3 is not in vocabulary
         self.assertNotIn('user3', view.json_pre_select())
 

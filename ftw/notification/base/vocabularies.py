@@ -68,7 +68,8 @@ class PrincipalVocabulary(SimpleVocabulary):
         for i, word in enumerate(query):
             query[i] = word.strip()
 
-        for v in self:
+        for i, v in enumerate(self):
+
             to_search = "%s %s" % (v.title, v.email)
             if self._compare(query, to_search):
                 yield v

@@ -97,16 +97,17 @@ class NotificationForm(BrowserView):
                 _id = 'group:%s' % term.token
 
             elif getattr(term, 'email', None):
-                name = "%s &lt;%s&gt;" % (term.title, term.email)
+                name = "%s [%s]" % (term.title, term.email)
                 _id = term.email
 
             else:
                 member = mtool.getMemberById(term.token)
                 email = member.getProperty('email', '')
-                name = "%s &lt;%s&gt;" % (term.title, email)
+                name = "%s [%s]" % (term.title, email)
                 _id = email
 
-            result.append({'id': _id, 'name': name})
+            result.append({'id': _id, 'text': name})
+
         return json.dumps(result)
 
     def json_source_by_group(self):
@@ -120,11 +121,11 @@ class NotificationForm(BrowserView):
         group = gtool.getGroupById(groupid)
 
         for member in group.getGroupMembers():
-            name = "%s &lt;%s&gt;" % (
+            name = "%s [%s]" % (
                 member.getProperty('fullname', member.getId()),
                 member.getProperty('email', ''))
             result.append({'id': member.getId(),
-                           'name': name})
+                           'text': name})
         return json.dumps(result)
 
     def json_pre_select(self):
@@ -138,10 +139,10 @@ class NotificationForm(BrowserView):
                 member = mtool.getMemberById(userid)
                 email = member.getProperty('email', '')
                 title = member.getProperty('fullname', member.getId())
-                name = "%s &lt;%s&gt;" % (title, email)
+                name = "%s [%s]" % (title, email)
                 _id = email
 
-                result.append({'id': _id, 'name': name})
+                result.append({'id': _id, 'text': name})
         return json.dumps(result)
 
     def send_notification(self):
