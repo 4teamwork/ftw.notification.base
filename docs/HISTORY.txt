@@ -2,10 +2,14 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
-------------------
+2.0 (unreleased)
+----------------
 
-- Nothing changed yet.
+- Implement select2 jquery plugin.
+  [mathias.leimgruber]
+
+- Use new vocabulary to collect all notifyable users.
+  [philipp.gross]
 
 
 1.2 (2012-10-16)
