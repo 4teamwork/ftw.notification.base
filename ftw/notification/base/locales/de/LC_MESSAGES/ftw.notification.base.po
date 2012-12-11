@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-15 13:10+0000\n"
+"POT-Creation-Date: 2012-12-11 14:18+0000\n"
 "PO-Revision-Date: 2011-12-02 15:16+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,111 +12,31 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./ftw/notification/base/browser/notification_form.pt:29
-msgid "Groups"
-msgstr "Gruppen"
-
-#: ./ftw/notification/base/browser/notification_form.pt:21
-msgid "Recipients"
-msgstr "Empfänger"
-
-#: ./ftw/notification/base/browser/notification_form.pt:33
-msgid "Users"
-msgstr "Benutzer"
-
-#. Default: "Cancel"
-#: ./ftw/notification/base/browser/form.py:106
-msgid "button_cancel"
-msgstr ""
-
-#. Default: "Send"
-#: ./ftw/notification/base/browser/form.py:79
-msgid "button_send"
-msgstr ""
-
-#. Default: "Enter one e-mail address per line"
-#: ./ftw/notification/base/browser/form.py:38
-msgid "help_addresses"
-msgstr ""
-
-#. Default: "Enter one e-mail address per line"
-#: ./ftw/notification/base/browser/form.py:45
-msgid "help_cc_addresses"
-msgstr ""
-
-#. Default: "Select users to notificate per cc."
-#: ./ftw/notification/base/browser/form.py:29
-msgid "help_cc_users"
-msgstr ""
-
-#. Default: "Enter a comment which will be contained in the notification E-Mail"
-#: ./ftw/notification/base/browser/form.py:53
-msgid "help_comment"
-msgstr ""
-
-#. Default: "When selected a you can send a Notification after saving."
-#: ./ftw/notification/base/viewlets/notificationform.pt:33
-msgid "help_notification"
-msgstr "Wenn ausgewählt wird nach dem Speichern eine Benachrichtigung an die selektierten Benutzer versendet"
-
-#. Default: "Select users to notificate."
-#: ./ftw/notification/base/browser/form.py:20
-msgid "help_users"
-msgstr ""
-
-#. Default: "E-Mail Addresses"
-#: ./ftw/notification/base/browser/form.py:37
-msgid "label_addresses"
-msgstr ""
-
-#. Default: "CC"
-msgid "label_cc"
+#: ./ftw/notification/base/browser/notification.pt:52
+msgid "CC"
 msgstr "CC"
 
-#. Default: "CC E-Mail Addresses"
-#: ./ftw/notification/base/browser/form.py:44
-msgid "label_cc_addresses"
-msgstr ""
-
-#. Default: "CC Users"
-#: ./ftw/notification/base/browser/form.py:28
-msgid "label_cc_users"
-msgstr ""
-
-#. Default: "Comment"
-#: ./ftw/notification/base/browser/form.py:52
-#: ./ftw/notification/base/browser/notification_form.pt:37
-msgid "label_comment"
+#: ./ftw/notification/base/browser/notification.pt:60
+msgid "Comment"
 msgstr "Kommentar"
 
-#. Default: "Name"
-#: ./ftw/notification/base/browser/views.py:72
-msgid "label_name"
-msgstr "Name"
-
-#. Default: "Notificate"
-#: ./ftw/notification/base/browser/form.py:61
-msgid "label_notificte"
-msgstr ""
+#: ./ftw/notification/base/browser/notification.pt:44
+msgid "To"
+msgstr "An"
 
 #. Default: "Send Notification"
-#: ./ftw/notification/base/events/handlers.py:24
-#: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
-#: ./ftw/notification/base/viewlets/notificationform.pt:31
+#: ./ftw/notification/base/browser/notification.pt:35
+#: ./ftw/notification/base/events/handlers.py:23
 msgid "label_send_notification"
 msgstr "Benachrichtigung senden"
 
-#. Default: "TO"
-msgid "label_to"
-msgstr "AN"
-
-#. Default: "Users"
-#: ./ftw/notification/base/browser/form.py:19
-msgid "label_users"
-msgstr ""
+#. Default: "You entered one or more invalid recipient(s)"
+#: ./ftw/notification/base/browser/notification.py:76
+msgid "statusmessage_invalid_mail"
+msgstr "Sie haben einen oder mehrere ungültige Empfänger eingegeben."
 
 #. Default: "You have to select at least one recipient"
-#: ./ftw/notification/base/events/handlers.py:66
+#: ./ftw/notification/base/browser/notification.py:69
 msgid "statusmessage_no_recipients"
 msgstr "Bitte wählen Sie mindestens 1 Empfänger (AN) aus."
 
@@ -127,3 +47,5 @@ msgstr "Nachricht wurde nicht versendet"
 #. Default: "The message was sent."
 msgid "statusmessage_notification_sent"
 msgstr "Nachricht wurde versendet"
+
+
