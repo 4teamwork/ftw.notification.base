@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.2.1.dev0'
+version = '2.0.dev0'
 maintainer = 'Jonas Baumann'
 
 tests_require = ['ftw.testing',
@@ -41,7 +41,6 @@ setup(name='ftw.notification.base',
       extras_require=dict(tests=tests_require),
       install_requires=[
         'setuptools',
-        'ftw.table',
         'plone.principalsource',
         ],
 
