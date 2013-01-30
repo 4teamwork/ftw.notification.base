@@ -1,0 +1,9 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope">
+
+  <permission
+    id="ftw.notification.base.send_notification"
+    title="ftw.notification.base: Send notification"
+    />
+
+</configure>

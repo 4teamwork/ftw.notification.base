@@ -1,13 +1,14 @@
 from AccessControl.interfaces import IRoleManager
 from ftw.notification.base.browser.notification import extract_email
-from ftw.notification.base.browser.notification import validmails
 from ftw.notification.base.browser.notification import to_utf8
+from ftw.notification.base.browser.notification import validmails
 from ftw.notification.base.testing import FTW_NOTIFICATION_FUNCTIONAL_TESTING
 from ftw.notification.base.testing import FTW_NOTIFICATION_INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_NAME, TEST_USER_PASSWORD
 from plone.testing.z2 import Browser
 from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
+from zExceptions import Unauthorized
 from zope.component import queryMultiAdapter
 import transaction
 import json
@@ -261,6 +262,15 @@ class TestNotificationViewFunctional(TestCase):
         self.browser.getControl('Send').click()
         # Redirect to content
         self.assertEquals(self.browser.url, self.folder.absolute_url())
+
+    def test_form_permission(self):
+        # By default the form ist only accessable by authenticated users.
+        # Even if the content is public
+        manager = IRoleManager(self.folder)
+        manager.manage_role('Anonymous', permissions=['View'])
+
+        url = self.folder.absolute_url() + '/notification_form'
+        self.assertRaises(Unauthorized, self.browser.open, url)
 
     def tearDown(self):
         super(TestNotificationViewFunctional, self).tearDown()

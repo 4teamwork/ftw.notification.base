@@ -12,7 +12,7 @@
     for="*"
     name="notification_form"
     class=".notification.NotificationForm"
-    permission="zope2.View"
+    permission="ftw.notification.base.send_notification"
     allowed_attributes="json_source json_source_by_group"
     />
 

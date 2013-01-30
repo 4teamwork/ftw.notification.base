@@ -5,6 +5,9 @@ Changelog
 2.0 (unreleased)
 ----------------
 
+- Use own permission to protect the notification form.
+  [mathias.leimgruber]
+
 - Implement select2 jquery plugin.
   [mathias.leimgruber]
 

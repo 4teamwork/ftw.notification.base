@@ -29,6 +29,7 @@
 
     <i18n:registerTranslations directory="locales"/>
 
+    <include file="permission.zcml" />
     <include package=".browser" />
     <include package=".adapters" />
     <include package=".events" />

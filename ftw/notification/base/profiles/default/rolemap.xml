@@ -1,0 +1,10 @@
+<rolemap>
+  <permissions>
+    <permission
+      name="plone.app.collection: Add Collection"
+      acquire="True">
+      <role name="Authenticated" />
+      <role name="Manager" />
+    </permission>
+  </permissions>
+</rolemap>
