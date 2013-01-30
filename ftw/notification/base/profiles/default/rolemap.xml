@@ -1,7 +1,7 @@
 <rolemap>
   <permissions>
     <permission
-      name="plone.app.collection: Add Collection"
+      name="ftw.notification.base: Send notification"
       acquire="True">
       <role name="Authenticated" />
       <role name="Manager" />
