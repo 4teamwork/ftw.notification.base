@@ -5,7 +5,8 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix zope.component.hooks import for Plone 4.3 compatibility
+  [jone]
 
 
 1.2.1 (2012-11-16)
