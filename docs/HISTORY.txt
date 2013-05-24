@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.2 (unreleased)
+1.2.2 (2013-05-24)
 ------------------
 
 - Fix zope.component.hooks import for Plone 4.3 compatibility
