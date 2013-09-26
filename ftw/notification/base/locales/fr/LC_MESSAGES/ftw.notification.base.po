@@ -14,55 +14,55 @@ msgstr ""
 
 #: ./ftw/notification/base/browser/notification_form.pt:30
 msgid "Groups"
-msgstr ""
+msgstr "Groupes"
 
 #: ./ftw/notification/base/browser/notification_form.pt:21
 msgid "Recipients"
-msgstr ""
+msgstr "Destinataires"
 
 #: ./ftw/notification/base/browser/notification_form.pt:34
 msgid "Users"
-msgstr ""
+msgstr "Utilisateur"
 
 #. Default: "When selected a you can send a Notification after saving."
 #: ./ftw/notification/base/viewlets/notificationform.pt:33
 msgid "help_notification"
-msgstr ""
+msgstr "Quand défini, un message sera envoyé au participants sélectionnés"
 
 msgid "label_cc"
-msgstr ""
+msgstr "CC"
 
 #. Default: "Comment"
 #: ./ftw/notification/base/browser/notification_form.pt:38
 msgid "label_comment"
-msgstr ""
+msgstr "Commentaire"
 
 #. Default: "Name"
 #: ./ftw/notification/base/browser/views.py:72
 msgid "label_name"
-msgstr ""
+msgstr "Nom"
 
 #. Default: "Send Notification"
 #: ./ftw/notification/base/events/handlers.py:24
 #: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
 #: ./ftw/notification/base/viewlets/notificationform.pt:31
 msgid "label_send_notification"
-msgstr ""
+msgstr "Envoyer une notification"
 
 msgid "label_to"
-msgstr ""
+msgstr "A"
 
 #. Default: "You have to select at least one recipient"
 #: ./ftw/notification/base/events/handlers.py:66
 msgid "statusmessage_no_recipients"
-msgstr ""
+msgstr "Vous devez sélectionner au moins un destinataire"
 
 #. Default: "The message couldn't be sent"
 msgid "statusmessage_notification_not_sent"
-msgstr ""
+msgstr "Le message n'est pas envoyé"
 
 #. Default: "The message was sent."
 msgid "statusmessage_notification_sent"
-msgstr ""
+msgstr "Le message est envoyé"
 
 
