@@ -71,8 +71,7 @@ def object_edited(object_, event):
 
 
 def add_group_members(context, name):
-    """ this function adds group members to request if there aren't already
-        there.
+    """Resolves group members
         name = 'to_list' or 'cc_list'
     """
     to_list = context.REQUEST.get(name, [])
