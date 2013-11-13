@@ -5,6 +5,9 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
+- Resolve members of nested groups.
+  [mathias.leimgruber]
+
 - Add test setup.
   [mathias.leimgruber]
 

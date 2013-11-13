@@ -32,3 +32,15 @@ class TestByline(TestCase):
         add_group_members(self.portal, 'to_list')
 
         self.assertEquals([self.user1.getId()], self.request.get('to_list'))
+
+    def test_resolve_nested_groups(self):
+        self.gm.addPrincipalToGroup(self.group_nested.getId(),
+                                    self.group.getId())
+
+        key = 'to_list_group'
+        self.request.set(key, [self.group.getId(), ])
+
+        add_group_members(self.portal, 'to_list')
+
+        self.assertListEqual([self.user2.getId(), self.user1.getId()],
+                          self.request.get('to_list'))

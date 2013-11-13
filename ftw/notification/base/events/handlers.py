@@ -74,14 +74,23 @@ def add_group_members(context, name):
     """Resolves group members
         name = 'to_list' or 'cc_list'
     """
-    to_list = context.REQUEST.get(name, [])
-    groups = context.REQUEST.get('%s_group' % name, '')
-    if len(groups):
-        for gid in groups:
-            group_tool = getToolByName(context, 'portal_groups')
-            group = group_tool.getGroupById(gid)
-            members = group.getAllGroupMemberIds()
-            for mid in members:
-                if mid not in to_list:
-                    to_list.append(mid)
-        context.REQUEST.set(name, to_list)
+    group_tool = getToolByName(context, 'portal_groups')
+    to_list = set(context.REQUEST.get(name, []))
+    groups = context.REQUEST.get('%s_group' % name, [])
+    get_group = group_tool.getGroupById
+
+    def resolve_group(group):
+        principals = group.getGroupMembers()
+
+        for principal in principals:
+            id_ = principal.getId()
+            if get_group(id_):
+                resolve_group(principal)
+            else:
+                to_list.add(id_)
+
+    for gid in groups:
+        group = get_group(gid)
+        resolve_group(group)
+
+    context.REQUEST.set(name, list(to_list))
