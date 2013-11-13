@@ -5,7 +5,8 @@ Changelog
 1.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add test setup.
+  [mathias.leimgruber]
 
 
 1.2.2 (2013-05-24)
