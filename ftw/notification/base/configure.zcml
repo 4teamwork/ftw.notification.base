@@ -24,6 +24,8 @@
        title="Allow sendto"
       />
 
+      <include package="plone.principalsource" file="configure.zcml" />
+
       <utility 
         component=".vocabularies.AvailableUsersVocabularyFactory" 
         name="ftw.notification.base.users"
