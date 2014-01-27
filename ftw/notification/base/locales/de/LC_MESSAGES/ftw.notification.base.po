@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-10 13:22+0000\n"
+"POT-Creation-Date: 2014-01-27 12:52+0000\n"
 "PO-Revision-Date: 2011-12-02 15:16+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./ftw/notification/base/browser/notification_form.pt:30
+#: ./ftw/notification/base/browser/notification_form.pt:29
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -20,7 +20,7 @@ msgstr "Gruppen"
 msgid "Recipients"
 msgstr "Empfänger"
 
-#: ./ftw/notification/base/browser/notification_form.pt:34
+#: ./ftw/notification/base/browser/notification_form.pt:33
 msgid "Users"
 msgstr "Benutzer"
 
@@ -34,12 +34,12 @@ msgid "label_cc"
 msgstr "CC"
 
 #. Default: "Comment"
-#: ./ftw/notification/base/browser/notification_form.pt:38
+#: ./ftw/notification/base/browser/notification_form.pt:37
 msgid "label_comment"
 msgstr "Kommentar"
 
 #. Default: "Name"
-#: ./ftw/notification/base/browser/views.py:72
+#: ./ftw/notification/base/browser/views.py:92
 msgid "label_name"
 msgstr "Name"
 
@@ -66,3 +66,5 @@ msgstr "Nachricht wurde nicht versendet"
 #. Default: "The message was sent."
 msgid "statusmessage_notification_sent"
 msgstr "Nachricht wurde versendet"
+
+
