@@ -5,7 +5,8 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add French translations.
+  [jone]
 
 
 1.2.3 (2013-11-15)
