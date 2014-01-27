@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-10 13:22+0000\n"
+"POT-Creation-Date: 2014-01-27 12:52+0000\n"
 "PO-Revision-Date: 2011-12-02 15:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: ftw.notification.base\n"
 
-#: ./ftw/notification/base/browser/notification_form.pt:30
+#: ./ftw/notification/base/browser/notification_form.pt:29
 msgid "Groups"
 msgstr ""
 
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Recipients"
 msgstr ""
 
-#: ./ftw/notification/base/browser/notification_form.pt:34
+#: ./ftw/notification/base/browser/notification_form.pt:33
 msgid "Users"
 msgstr ""
 
@@ -38,12 +38,12 @@ msgid "label_cc"
 msgstr ""
 
 #. Default: "Comment"
-#: ./ftw/notification/base/browser/notification_form.pt:38
+#: ./ftw/notification/base/browser/notification_form.pt:37
 msgid "label_comment"
 msgstr ""
 
 #. Default: "Name"
-#: ./ftw/notification/base/browser/views.py:72
+#: ./ftw/notification/base/browser/views.py:92
 msgid "label_name"
 msgstr ""
 

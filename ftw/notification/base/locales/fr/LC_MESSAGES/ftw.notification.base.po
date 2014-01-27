@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2014-01-27 12:52+0000\n"
-"PO-Revision-Date: 2011-12-02 15:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,57 +14,55 @@ msgstr ""
 
 #: ./ftw/notification/base/browser/notification_form.pt:29
 msgid "Groups"
-msgstr "Gruppen"
+msgstr "Groupes"
 
 #: ./ftw/notification/base/browser/notification_form.pt:21
 msgid "Recipients"
-msgstr "Empfänger"
+msgstr "Destinataires"
 
 #: ./ftw/notification/base/browser/notification_form.pt:33
 msgid "Users"
-msgstr "Benutzer"
+msgstr "Utilisateur"
 
 #. Default: "When selected a you can send a Notification after saving."
 #: ./ftw/notification/base/viewlets/notificationform.pt:33
 msgid "help_notification"
-msgstr "Wenn ausgewählt wird nach dem Speichern eine Benachrichtigung an die selektierten Benutzer versendet"
+msgstr "Quand défini, un message sera envoyé au participants sélectionnés"
 
-#. Default: "CC"
 msgid "label_cc"
 msgstr "CC"
 
 #. Default: "Comment"
 #: ./ftw/notification/base/browser/notification_form.pt:37
 msgid "label_comment"
-msgstr "Kommentar"
+msgstr "Commentaire"
 
 #. Default: "Name"
 #: ./ftw/notification/base/browser/views.py:92
 msgid "label_name"
-msgstr "Name"
+msgstr "Nom"
 
 #. Default: "Send Notification"
 #: ./ftw/notification/base/events/handlers.py:24
 #: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
 #: ./ftw/notification/base/viewlets/notificationform.pt:31
 msgid "label_send_notification"
-msgstr "Benachrichtigung senden"
+msgstr "Envoyer une notification"
 
-#. Default: "TO"
 msgid "label_to"
-msgstr "AN"
+msgstr "A"
 
 #. Default: "You have to select at least one recipient"
 #: ./ftw/notification/base/events/handlers.py:66
 msgid "statusmessage_no_recipients"
-msgstr "Bitte wählen Sie mindestens 1 Empfänger (AN) aus."
+msgstr "Vous devez sélectionner au moins un destinataire"
 
 #. Default: "The message couldn't be sent"
 msgid "statusmessage_notification_not_sent"
-msgstr "Nachricht wurde nicht versendet"
+msgstr "Le message n'est pas envoyé"
 
 #. Default: "The message was sent."
 msgid "statusmessage_notification_sent"
-msgstr "Nachricht wurde versendet"
+msgstr "Le message est envoyé"
 
 
