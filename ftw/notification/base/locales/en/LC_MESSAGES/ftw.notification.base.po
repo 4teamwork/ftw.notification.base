@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-01-27 12:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./ftw/notification/base/browser/notification_form.pt:29
+msgid "Groups"
+msgstr "Groups"
+
+#: ./ftw/notification/base/browser/notification_form.pt:21
+msgid "Recipients"
+msgstr "Recipients"
+
+#: ./ftw/notification/base/browser/notification_form.pt:33
+msgid "Users"
+msgstr "Users"
+
+#. Default: "When selected a you can send a Notification after saving."
+#: ./ftw/notification/base/viewlets/notificationform.pt:33
+msgid "help_notification"
+msgstr "When checked a notification form will be opened after saving."
+
+msgid "label_cc"
+msgstr "CC"
+
+#. Default: "Comment"
+#: ./ftw/notification/base/browser/notification_form.pt:37
+msgid "label_comment"
+msgstr "Comment"
+
+#. Default: "Name"
+#: ./ftw/notification/base/browser/views.py:92
+msgid "label_name"
+msgstr "Name"
+
+#. Default: "Send Notification"
+#: ./ftw/notification/base/events/handlers.py:24
+#: ./ftw/notification/base/skins/ftw_notification_base/notification_form.cpt:12
+#: ./ftw/notification/base/viewlets/notificationform.pt:31
+msgid "label_send_notification"
+msgstr "Send notification"
+
+msgid "label_to"
+msgstr "TO"
+
+#. Default: "You have to select at least one recipient"
+#: ./ftw/notification/base/events/handlers.py:66
+msgid "statusmessage_no_recipients"
+msgstr "At least one recipient should be selected"
+
+#. Default: "The message couldn't be sent"
+msgid "statusmessage_notification_not_sent"
+msgstr "Error when sending the notification messages"
+
+#. Default: "The message was sent."
+msgid "statusmessage_notification_sent"
+msgstr "The notifications were sent."
