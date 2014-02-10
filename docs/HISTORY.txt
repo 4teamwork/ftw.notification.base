@@ -5,6 +5,9 @@ Changelog
 1.2.4 (unreleased)
 ------------------
 
+- Fix jquery attribute equals selector.
+  [elio.schmutz]
+
 - Add French and English translations.
   [jone]
 
