@@ -2,16 +2,16 @@
     <script>
         jQuery(function($){
             $('#all-to').click(function() {
-                $('input[name=to_list:list]').attr('checked', $(this).is(':checked'));
+                $('input[name="to_list:list"]').attr('checked', $(this).is(':checked'));
             });
             $('#all-cc').click(function() {
-                $('input[name=cc_list:list]').attr('checked', $(this).is(':checked'));
+                $('input[name="cc_list:list"]').attr('checked', $(this).is(':checked'));
             });
             $('#all-group-to').click(function() {
-                $('input[name=to_list_group:list]').attr('checked', $(this).is(':checked'));
+                $('input[name="to_list_group:list"]').attr('checked', $(this).is(':checked'));
             });
             $('#all-group-cc').click(function() {
-                $('input[name=cc_list_group:list]').attr('checked', $(this).is(':checked'));
+                $('input[name="cc_list_group:list"]').attr('checked', $(this).is(':checked'));
             });
         });
     </script>

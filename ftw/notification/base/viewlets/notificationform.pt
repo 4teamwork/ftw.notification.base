@@ -1,9 +1,9 @@
 <script>
     function select_recipients(checked){
-        jq('input[name=to_list:list]').attr('checked', checked);
+        jq('input[name="to_list:list"]').attr('checked', checked);
     }
-    
-    jq(function(){  
+
+    jq(function(){
         jq('#sendNotification').click(function(){
             var isChecked = jq('#sendNotification').attr('checked');
             if (!isChecked){
@@ -19,19 +19,19 @@
                 });
             }
         });
-        
+
     });
-    
+
 </script>
 
 <div class="field ArchetypesBooleanWidget" i18n:domain="ftw.notification.base">
-          
+
         <input type="checkbox" id="sendNotification" name="sendNotification:boolean" class="noborder" >
-      
+
           <label for="sendNotification" class="formQuestion" i18n:translate="label_send_notification">Send Notification</label>
-          
+
           <div id="sendNotification_help" class="formHelp" i18n:translate="help_notification">When selected a you can send a Notification after saving.</div>
-          
+
 </div>
 
 <div id="sendNotificationTo"><!--ie fix--></div>
