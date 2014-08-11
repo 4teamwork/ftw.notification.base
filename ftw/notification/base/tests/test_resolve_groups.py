@@ -43,4 +43,4 @@ class TestByline(TestCase):
         add_group_members(self.portal, 'to_list')
 
         self.assertListEqual([self.user2.getId(), self.user1.getId()],
-                          self.request.get('to_list'))
+                             self.request.get('to_list'))
