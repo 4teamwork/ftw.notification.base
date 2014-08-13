@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.5 (unreleased)
+1.2.5 (2014-08-13)
 ------------------
 
 - Replaced deprecated jquery jq notation with $.
