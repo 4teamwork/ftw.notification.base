@@ -13,6 +13,22 @@
             $('#all-group-cc').click(function() {
                 $('input[name="cc_list_group:list"]').attr('checked', $(this).is(':checked'));
             });
+            $('.showUsers').click(function(event) {
+                event.preventDefault();
+                self = $(this);
+                target = self.parent().find('.groupUsers');
+
+                if (target.text().length > 0) {
+                    target.toggle();
+                } else {
+                    groupid = self.data('groupid');
+                    $.ajax({
+                        url: 'notification_form_content/get_users_for_group?groupid='+groupid
+                    }).done(function(data) {
+                        target.text(data)
+                    });
+                }
+            });
         });
     </script>
 

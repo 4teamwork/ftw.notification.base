@@ -19,9 +19,9 @@ def name_helper(item, value):
 
 def groupname_helper(item, value):
     title = safe_unicode(item['title'], 'utf-8')
-    val = u'%s' % title
-#   bei klick alle user anzeigen? js
-#    val = u'<a href="#" class="showUsers" title="groupid">%s</a>' % title
+    groupid = safe_unicode(item['value'], 'utf-8')
+    val = u'<a href="#" class="showUsers" data-groupid="%s">%s</a>\
+            <br /><span class="groupUsers"></span>' % (groupid, title)
     return val
 
 
@@ -134,7 +134,7 @@ class NotificationForm(BrowserView):
 
                 user = dict(title=t.title,
                             value=t.value,
-                            email=member.getProperty("email", ""), 
+                            email=member.getProperty("email", ""),
                             selected=t.value in self.pre_select)
                 finalized.append(user)
 
@@ -168,3 +168,17 @@ class NotificationForm(BrowserView):
         # set sendNotification in REQUEST
         self.request.set('sendNotification', 1)
         object_edited(self.context, None)
+
+    def get_users_for_group(self, groupid):
+        """Get list of users in group"""
+        gtool = getToolByName(self.context, 'portal_groups')
+        memtool = getToolByName(self.context, 'portal_membership')
+        group = gtool.getGroupById(groupid)
+
+        if not group:
+            return ""
+
+        members = group.getGroupMembers()
+        names = [member.getProperty('fullname') for member in members]
+        sort_names = sorted(names, key=str.lower)
+        return ", ".join(sort_names)

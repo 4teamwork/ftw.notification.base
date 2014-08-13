@@ -1,5 +1,6 @@
 from ftw.builder.testing import BUILDER_LAYER
 from plone.app.testing import applyProfile
+from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
@@ -29,3 +30,7 @@ FTW_NOTIFICATION_BASE_FIXTURE = FtwNotificationBaseLayer()
 FTW_N_BASE_INTEGRATION_TESTING = IntegrationTesting(
     bases=(FTW_NOTIFICATION_BASE_FIXTURE, ),
     name="FtwNofificationBase:Integration")
+
+FTW_N_BASE_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(FTW_NOTIFICATION_BASE_FIXTURE, ),
+    name="FtwNofificationBase:Functional")

@@ -8,7 +8,7 @@
         name="notification_form_content"
 		class=".views.NotificationForm"
         permission="zope2.View"
-		allowed_attributes="send_notification"
+		allowed_attributes="send_notification get_users_for_group"
         />
 
 
