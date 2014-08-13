@@ -11,6 +11,9 @@ Changelog
 1.2.5 (2014-08-13)
 ------------------
 
+- Fixed show group members on notification view for https.
+  [lknoepfel]
+
 - Replaced deprecated jquery jq notation with $.
   [lknoepfel]
 
