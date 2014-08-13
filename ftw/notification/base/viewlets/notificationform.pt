@@ -1,21 +1,21 @@
 <script>
     function select_recipients(checked){
-        jq('input[name="to_list:list"]').attr('checked', checked);
+        $('input[name="to_list:list"]').attr('checked', checked);
     }
 
-    jq(function(){
-        jq('#sendNotification').click(function(){
-            var isChecked = jq('#sendNotification').attr('checked');
+    $(function(){
+        $('#sendNotification').click(function(){
+            var isChecked = $('#sendNotification').attr('checked');
             if (!isChecked){
-                jq('#sendNotificationTo').hide('fast');
+                $('#sendNotificationTo').hide('fast');
             }else{
                 var url = location.href;
                 indexOf = url.indexOf('portal_factory');
                 if(indexOf){
                     url = location.href.substr(0, indexOf);
                 }
-                jq('#sendNotificationTo').load(url+'@@notification_form_content',function(){
-                    jq('#sendNotificationTo').show('fast')
+                $('#sendNotificationTo').load(url+'@@notification_form_content',function(){
+                    $('#sendNotificationTo').show('fast')
                 });
             }
         });

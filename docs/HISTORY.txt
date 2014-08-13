@@ -5,6 +5,9 @@ Changelog
 1.2.5 (unreleased)
 ------------------
 
+- Replaced deprecated jquery jq notation with $.
+  [lknoepfel]
+
 - Extended NotificationForm to show members of groups on request.
   [lknoepfel]
 
