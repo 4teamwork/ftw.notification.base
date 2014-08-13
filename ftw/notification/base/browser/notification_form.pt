@@ -16,7 +16,7 @@
             $('.showUsers').click(function(event) {
                 event.preventDefault();
                 self = $(this);
-                target = self.parent().find('.groupUsers');
+                target = self.closest('td').find('.groupUsers');
 
                 if (target.text().length > 0) {
                     target.toggle();
@@ -25,7 +25,7 @@
                     $.ajax({
                         url: 'notification_form_content/get_users_for_group?groupid='+groupid
                     }).done(function(data) {
-                        target.text(data)
+                        target.text(data);
                     });
                 }
             });
