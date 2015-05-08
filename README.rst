@@ -43,9 +43,9 @@ Usage
 Links
 -----
 
-- Main github project repository: https://github.com/4teamwork/ftw.notification.base
-- Issue tracker: https://github.com/4teamwork/ftw.notification.base/issues
-- Package on pypi: http://pypi.python.org/pypi/ftw.notification.base
+- Github: https://github.com/4teamwork/ftw.notification.base
+- Issues: https://github.com/4teamwork/ftw.notification.base/issues
+- Pypi: http://pypi.python.org/pypi/ftw.notification.base
 
 
 Copyright
