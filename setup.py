@@ -42,6 +42,7 @@ setup(name='ftw.notification.base',
       extras_require=dict(tests=tests_require),
 
       install_requires=[
+        'Plone',
         'setuptools',
         'ftw.table',
         'plone.principalsource',
