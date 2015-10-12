@@ -8,6 +8,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.component import queryUtility
 from zope.i18n import translate
+from zope.schema.interfaces import ITitledTokenizedTerm
 
 
 def name_helper(item, value):
@@ -132,7 +133,8 @@ class NotificationForm(BrowserView):
                 if member is None:
                     continue
 
-                user = dict(title=t.title,
+                title = t.title if ITitledTokenizedTerm.providedBy(t) else t.value
+                user = dict(title=title,
                             value=t.value,
                             email=member.getProperty("email", ""),
                             selected=t.value in self.pre_select)
