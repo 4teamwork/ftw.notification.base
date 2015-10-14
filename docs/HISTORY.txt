@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.7 (unreleased)
+1.2.7 (2015-10-14)
 ------------------
 
 - Fix bug when title is missing on user.
