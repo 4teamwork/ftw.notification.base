@@ -7,6 +7,7 @@ maintainer = 'Jonas Baumann'
 tests_require = ['ftw.testing [splinter]',
                  'ftw.builder',
                  'plone.app.testing',
+                 'ftw.testbrowser',
                  ]
 
 setup(name='ftw.notification.base',

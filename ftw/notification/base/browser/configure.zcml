@@ -5,7 +5,7 @@
 
     <browser:page
         for="*"
-        name="notification_form_content"
+        name="notification_form"
 		class=".views.NotificationForm"
         permission="zope2.View"
 		allowed_attributes="send_notification get_users_for_group"
