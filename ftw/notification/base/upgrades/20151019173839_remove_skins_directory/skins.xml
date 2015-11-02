@@ -8,11 +8,6 @@
 
  <object name="ftw_notification_base"
     meta_type="Filesystem Directory View"
-    directory="ftw.notification.base:skins/ftw_notification_base"/>
-  
-  <skin-path name="*">
-  <layer name="ftw_notification_base"
-     insert-after="izug_theme_custom_templates"/> 
- </skin-path>
+    directory="ftw.notification.base:skins/ftw_notification_base" remove="True" />
 
 </object>

@@ -1,4 +1,6 @@
 from ftw.builder.testing import BUILDER_LAYER
+from ftw.builder.testing import functional_session_factory
+from ftw.builder.testing import set_builder_session_factory
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
@@ -32,5 +34,6 @@ FTW_N_BASE_INTEGRATION_TESTING = IntegrationTesting(
     name="FtwNofificationBase:Integration")
 
 FTW_N_BASE_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(FTW_NOTIFICATION_BASE_FIXTURE, ),
+    bases=(FTW_NOTIFICATION_BASE_FIXTURE,
+           set_builder_session_factory(functional_session_factory)),
     name="FtwNofificationBase:Functional")

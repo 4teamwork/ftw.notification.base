@@ -11,6 +11,9 @@ Changelog
 1.2.7 (2015-10-14)
 ------------------
 
+- Make notification form a view and add field to enable redirect to origin.
+  [tschanzt]
+
 - Fix bug when title is missing on user.
   [lknoepfel]
 

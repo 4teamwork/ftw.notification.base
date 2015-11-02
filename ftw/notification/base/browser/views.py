@@ -68,6 +68,8 @@ class NotificationForm(BrowserView):
         self.pre_select = []
 
     def __call__(self):
+        if self.request.form.get('form.submitted'):
+            self.send_notification()
         return self.template()
 
     @property
@@ -170,6 +172,7 @@ class NotificationForm(BrowserView):
         # set sendNotification in REQUEST
         self.request.set('sendNotification', 1)
         object_edited(self.context, None)
+        return self.request.response.redirect(self.request.get('came_from'))
 
     def get_users_for_group(self, groupid):
         """Get list of users in group"""
