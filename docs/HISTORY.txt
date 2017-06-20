@@ -5,6 +5,8 @@ Changelog
 1.2.8 (unreleased)
 ------------------
 
+- Remove dependency on ftw.testing[splinter] (has been dropped in ftw.testing). [lgraf]
+
 - Drop Plone 4.1 support. [jone]
 
 - Make notification form a view and add field to enable redirect to origin.

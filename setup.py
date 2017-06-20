@@ -4,7 +4,7 @@ import os
 version = '1.2.8.dev0'
 maintainer = 'Jonas Baumann'
 
-tests_require = ['ftw.testing [splinter]',
+tests_require = ['ftw.testing',
                  'ftw.builder',
                  'plone.app.testing',
                  'ftw.testbrowser',
