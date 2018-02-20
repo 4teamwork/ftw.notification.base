@@ -19,12 +19,12 @@ class TestNotificationForm(TestCase):
 
         self.group1 = create(Builder('group')
             .with_groupid('group1')
-            .titled('Group1')
+            .titled(u'Group1')
             .with_members(self.user1, self.user2))
 
         self.group2 = create(Builder('group')
             .with_groupid('group2')
-            .titled('Group2')
+            .titled(u'Group2')
             .with_members(self.user2, self.user3))
 
     def test_get_users_of_group(self):

@@ -14,11 +14,11 @@ class TestByline(TestCase):
         self.user2 = create(Builder('user').named('User', 'Nr2'))
 
         self.group = create(Builder('group')
-                            .titled('Group1')
+                            .titled(u'Group1')
                             .with_members(self.user1))
 
         self.group_nested = create(Builder('group')
-                                   .titled('Group2 nested')
+                                   .titled(u'Group2 nested')
                                    .with_members(self.user2))
 
         self.portal = self.layer['portal']
