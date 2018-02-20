@@ -2,10 +2,13 @@ from DateTime import DateTime
 from ftw.notification.base import notification_base_factory as _
 from ftw.notification.base.events.events import NotificationEvent
 from ftw.notification.base.interfaces import INotifier
+from ftw.notification.base.utils import IS_PLONE_4
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.component import getMultiAdapter
 from Products.CMFPlone.utils import safe_unicode
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.event import notify
 
 
@@ -45,9 +48,16 @@ def object_edited(object_, event):
     # Do nothing if send notification checkbox wasn't checked.
     if not object_.REQUEST.get('sendNotification', False):
         return
-    sp = getToolByName(object_, 'portal_properties').site_properties
-    use_view_action = object_.Type() in sp.getProperty(
-        'typesUseViewActionInListings', ())
+
+    if IS_PLONE_4:
+        sp = getToolByName(object_, 'portal_properties').site_properties
+        types_use_view_action_in_listings = sp.getProperty(
+            'typesUseViewActionInListings', ())
+    else:
+        registry = getUtility(IRegistry)
+        types_use_view_action_in_listings = registry['plone.types_use_view_action_in_listings']
+
+    use_view_action = object_.Type() in types_use_view_action_in_listings
 
     # XXXXXXXXX handle groups
 
