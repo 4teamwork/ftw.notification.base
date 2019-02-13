@@ -4,7 +4,6 @@ from ftw.notification.base.browser.views import NotificationForm
 from ftw.notification.base.testing import FTW_N_BASE_INTEGRATION_TESTING
 from ftw.testbrowser import browser
 from unittest2 import TestCase
-from zope.component import getAdapter
 
 
 class TestNotificationForm(TestCase):
@@ -19,14 +18,14 @@ class TestNotificationForm(TestCase):
         self.user3 = create(Builder('user').named('User', 'Nr3'))
 
         self.group1 = create(Builder('group')
-            .with_groupid('group1')
-            .titled('Group1')
-            .with_members(self.user1, self.user2))
+                             .with_groupid('group1')
+                             .titled('Group1')
+                             .with_members(self.user1, self.user2))
 
         self.group2 = create(Builder('group')
-            .with_groupid('group2')
-            .titled('Group2')
-            .with_members(self.user2, self.user3))
+                             .with_groupid('group2')
+                             .titled('Group2')
+                             .with_members(self.user2, self.user3))
 
     def test_get_users_of_group(self):
         view = NotificationForm(self.portal, self.portal.REQUEST)
