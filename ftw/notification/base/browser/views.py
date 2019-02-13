@@ -30,17 +30,17 @@ def checkbox_to_selected_helper(item, value):
         return u"""<input type="checkbox"
                           name="to_list:list"
                           checked="checked"
-                          value="%s"/>""" % item['value']
+                          value="%s"/>""" % item['email']
 
     return u"""<input type="checkbox"
                       name="to_list:list"
-                      value="%s"/>""" % item['value']
+                      value="%s"/>""" % item['email']
 
 
 def checkbox_cc_helper(item, value):
     return u"""<input type="checkbox"
                     name="cc_list:list"
-                    value="%s"/>""" % item['value']
+                    value="%s"/>""" % item['email']
 
 
 def checkbox_to_group_helper(item, value):
@@ -134,7 +134,7 @@ class NotificationForm(BrowserView):
 
                 user = dict(title=t.title,
                             value=t.value,
-                            email=member.getProperty("email", ""),
+                            email=member.getProperty("email", t.value),
                             selected=t.value in self.pre_select)
                 finalized.append(user)
 

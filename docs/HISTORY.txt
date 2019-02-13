@@ -2,10 +2,10 @@ Changelog
 =========
 
 
-1.2.7 (unreleased)
-------------------
+1.2.6.1 (unreleased)
+--------------------
 
-- Nothing changed yet.
+- Use E-Mail instead of userid for notification form. [mathias.leimgruber]
 
 
 1.2.6 (2014-08-13)
