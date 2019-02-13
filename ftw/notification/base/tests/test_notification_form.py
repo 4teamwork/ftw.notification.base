@@ -2,6 +2,7 @@ from ftw.builder import Builder
 from ftw.builder import create
 from ftw.notification.base.browser.views import NotificationForm
 from ftw.notification.base.testing import FTW_N_BASE_INTEGRATION_TESTING
+from ftw.testbrowser import browser
 from unittest2 import TestCase
 from zope.component import getAdapter
 
@@ -33,3 +34,14 @@ class TestNotificationForm(TestCase):
                           view.get_users_for_group('group1'))
         self.assertEquals('Nr2 User, Nr3 User',
                           view.get_users_for_group('group2'))
+
+    def test_use_email_property(self):
+        create(Builder('user').named('User', 'Nr4')
+               .with_userid('usernr4')
+               .having(email='test@example.com'))
+
+        view = NotificationForm(self.portal, self.portal.REQUEST)
+
+        browser.open_html(view.render_listing())
+        self.assertTrue(browser.css('[value="test@example.com"]'),
+                        'Expect to find the email address as value in table.')
