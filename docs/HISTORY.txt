@@ -5,6 +5,10 @@ Changelog
 1.2.8 (unreleased)
 ------------------
 
+- Drop Plone 4.2 support. [mathias.leimgruber]
+
+- Use E-Mail instead of userid for notification form. [mathias.leimgruber]
+
 - Remove dependency on ftw.testing[splinter] (has been dropped in ftw.testing). [lgraf]
 
 - Drop Plone 4.1 support. [jone]
