@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.6.1 (unreleased)
+1.2.6.1 (2019-02-15)
 --------------------
 
 - Use E-Mail instead of userid for notification form. [mathias.leimgruber]
