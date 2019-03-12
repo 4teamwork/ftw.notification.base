@@ -5,7 +5,8 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+
+- REVERT: "Use E-Mail instead of userid for notification form." [mathias.leimgruber]
 
 
 1.3.0 (2019-02-14)
